@@ -1,0 +1,12 @@
+﻿# cloud/ is a mirror of the GCS bucket: pipeline source that runs on Linux (deploy.sh, Python
+# steps) and run artifacts with recorded SHA-256s. Keep text files LF on every platform so they
+# stay byte-identical to the bucket objects; leave binaries untouched.
+cloud/**            text=auto eol=lf
+*.joblib            binary
+*.onnx              binary
+*.gz                binary
+*.zst               binary
+*.pgen              binary
+*.zip               binary
+*.wasm              binary
+*.docx              binary

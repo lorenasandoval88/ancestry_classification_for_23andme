@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "083fqA==",
+      "generation": "1793216830268891",
+      "md5Hash": "i41WPSms3Mn2KSRv//KvsQ==",
+      "size": "16822151"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+    "file_index": 1,
+    "file_name": "hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+    "object_name": "geneticFiles/hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+    "participant_id": "hu1C1368",
+    "participant_index": 55,
+    "source_metadata": {
+      "crc32c": "083fqA==",
+      "generation": "1783714934845721",
+      "md5Hash": "i41WPSms3Mn2KSRv//KvsQ==",
+      "size": "16822151"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt"
+  },
+  "file_name": "hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+  "onnx_python_probability_difference": 3.80995821558372e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu1C1368",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9901925443078325,
+    "called_model_markers": 332371,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 3259,
+    "possible_opposite_strand": 0,
+    "rows": 638570
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 7.33524085916315e-09,
+    "AMR": 2.7114055792254455e-11,
+    "EAS": 7.938600297963117e-12,
+    "EUR": 0.9999980926513672,
+    "SAS": 1.861901068878069e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "d14df908c1beedde3d69",
+  "training_people": 2003
+}

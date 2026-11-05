@@ -1,30 +1,30 @@
 // Build data/reference_cohort.json: the 1000 Genomes people used to train/test the
-// ancestry classifier, joined with the public population panel and, when present, the
-// Step 6 test-set evaluation of the published model.
+// ancestry classifier, joined with the public population panel and the Step 6 test-set
+// evaluation of the published model.
 //
-//   node scripts/build-cohort.mjs
+//   node scripts/build-cohort.mjs [--run <run_id>]
 //
-// Inputs (data/training_model/cloudModel/2003train_501test_input/):
-//   train2003.txt, test501.txt                       one sample ID per line
-//   integrated_call_samples_v3.20130502.ALL.panel    sample  pop  super_pop  gender
-//   (verified against population_panel_sha256 in the training summary)
-//
-// Optional (data/training_model/cloudModel/6_test_model/<run_id>/, the run matching model/metadata.json):
-//   predictions.tsv      IID  population  actual_group  predicted_group  correct  prob_AFR … prob_SAS
-//   test_summary.json    accuracy, balanced_accuracy, correct, selected_markers, run_id …
-//   onnx_parity.json     max_probability_absolute_difference, same_predicted_labels, tolerance …
-//   confusion_matrix.tsv actual_group  AFR  AMR  EAS  EUR  SAS
+// Reads the bucket mirror cloud/ for the run named in model/metadata.json (see cloud/README.md):
+//   2_split_the_samples/input/<run>/train2003.txt, test501.txt   one sample ID per line
+//   3_audit_pop_and_relatives/input/<run>/population.panel       sample  pop  super_pop  gender
+//   3_audit_pop_and_relatives/results/<run>/audit_summary.json   population_panel_sha256 (verified)
+//   6_test_model/input/<run>/input_manifest.json                 staged-input md5 of the panel (verified)
+//   6_test_model/results/<run>/predictions.tsv     IID  population  actual_group  predicted_group  correct  prob_AFR … prob_SAS
+//   6_test_model/results/<run>/test_summary.json   accuracy, balanced_accuracy, correct, selected_markers, run_id …
+//   6_test_model/results/<run>/onnx_parity.json    max_probability_absolute_difference, same_predicted_labels, tolerance …
+//   5_fit_pca_and_classifier/results/<run>/training_summary.json   selected_markers, best_parameters, cv_* …
 
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseArgs, readJsonIf, resolveRun } from "./lib/run-dir.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const cloud = resolve(root, "data/training_model/cloudModel");
-const inp = resolve(cloud, "2003train_501test_input");
+const args = parseArgs(process.argv.slice(2));
+const run = resolveRun(root, args.run);
+const inp = run.input("2_split_the_samples");
 const out = resolve(root, "data/reference_cohort.json");
-const metadataPath = resolve(root, "model/metadata.json");
 
 const POP_NAMES = {
   ACB: "African Caribbean in Barbados", ASW: "African Ancestry in Southwest US", BEB: "Bengali in Bangladesh",
@@ -44,14 +44,29 @@ if (new Set(train).size !== train.length || new Set(test).size !== test.length) 
 const overlap = train.filter((s) => test.includes(s));
 if (overlap.length) throw new Error(`IDs in both splits: ${overlap.join(", ")}`);
 
-const panelPath = resolve(inp, "integrated_call_samples_v3.20130502.ALL.panel");
+const panelPath = join(run.input("3_audit_pop_and_relatives"), "population.panel");
 const panelBuf = readFileSync(panelPath);
 const panelSha = createHash("sha256").update(panelBuf).digest("hex");
-const summaryFile = readdirSync(cloud).find((f) => f.endsWith("_training_summary.json"));
-const summary = summaryFile ? JSON.parse(readFileSync(resolve(cloud, summaryFile), "utf8")) : {};
-if (summary.population_panel_sha256 && summary.population_panel_sha256 !== panelSha) {
-  throw new Error(`panel sha256 ${panelSha} != training summary ${summary.population_panel_sha256}`);
+const panelMd5 = createHash("md5").update(panelBuf).digest("base64");
+
+// Provenance: the panel must be the object the cloud run staged (Step 6 input manifest) and
+// the one the Step 3 audit hashed.
+const panelChecks = [];
+const manifest = readJsonIf(join(run.input("6_test_model"), "input_manifest.json"));
+const stagedPanel = manifest?.staged_inputs?.panel;
+if (stagedPanel?.metadata?.md5Hash) {
+  if (stagedPanel.metadata.md5Hash !== panelMd5 || Number(stagedPanel.metadata.size) !== panelBuf.length) {
+    throw new Error(`panel md5 ${panelMd5} (${panelBuf.length} B) != staged input ${stagedPanel.metadata.md5Hash} (${stagedPanel.metadata.size} B) in 6_test_model/input/${run.runId}/input_manifest.json`);
+  }
+  panelChecks.push(`6_test_model/input/${run.runId}/input_manifest.json`);
 }
+const audit = readJsonIf(join(run.results("3_audit_pop_and_relatives"), "audit_summary.json"));
+if (audit?.population_panel_sha256) {
+  if (audit.population_panel_sha256 !== panelSha) throw new Error(`panel sha256 ${panelSha} != audit_summary ${audit.population_panel_sha256}`);
+  panelChecks.push(`3_audit_pop_and_relatives/results/${run.runId}/audit_summary.json`);
+}
+const training = readJsonIf(join(run.results("5_fit_pca_and_classifier"), "training_summary.json"));
+if (training?.run_id && training.run_id !== run.runId) throw new Error(`training_summary.json is from run ${training.run_id}, expected ${run.runId}`);
 
 const panel = new Map();
 for (const line of panelBuf.toString("utf8").split(/\r?\n/).slice(1)) {
@@ -79,22 +94,16 @@ const readTsv = (path) => {
   return lines.slice(1).map((l) => Object.fromEntries(header.map((h, i) => [h, l.split("\t")[i]])));
 };
 
-/** Pick the Step 6 results folder: the run named in model/metadata.json, else the only run present. */
+/** Step 6 results folder of the run (cloud/6_test_model/results/<run_id>/), if it has predictions. */
 function findStep6() {
-  const dir = resolve(cloud, "6_test_model");
-  if (!existsSync(dir)) return null;
-  const runs = readdirSync(dir).filter((d) => statSync(join(dir, d)).isDirectory() && existsSync(join(dir, d, "predictions.tsv")));
-  if (!runs.length) return null;
-  const meta = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, "utf8")) : null;
-  if (meta?.run_id) {
-    if (!runs.includes(meta.run_id)) {
-      console.warn(`Step 6 results present (${runs.join(", ")}) but none match model/metadata.json run ${meta.run_id}; skipping evaluation`);
-      return null;
-    }
-    return { runId: meta.run_id, dir: join(dir, meta.run_id) };
+  const dir = run.results("6_test_model");
+  if (!existsSync(join(dir, "predictions.tsv"))) return null;
+  const ts = readJsonIf(join(dir, "test_summary.json"));
+  if (ts?.run_id && ts.run_id !== run.runId) throw new Error(`6_test_model/test_summary.json is from run ${ts.run_id}, expected ${run.runId}`);
+  if (ts?.selected_markers && run.metadata?.feature_count && ts.selected_markers !== run.metadata.feature_count) {
+    throw new Error(`6_test_model/test_summary.json has ${ts.selected_markers} markers, model/metadata.json has ${run.metadata.feature_count}`);
   }
-  if (runs.length > 1) throw new Error(`Several Step 6 runs under ${dir} and no model/metadata.json to pick one`);
-  return { runId: runs[0], dir: join(dir, runs[0]) };
+  return { runId: run.runId, dir };
 }
 
 let evaluation = null;
@@ -115,7 +124,7 @@ if (step6) {
   }
   if (testIds.size) throw new Error(`predictions.tsv is missing ${testIds.size} test people`);
 
-  const readJson = (f) => existsSync(join(step6.dir, f)) ? JSON.parse(readFileSync(join(step6.dir, f), "utf8")) : null;
+  const readJson = (f) => readJsonIf(join(step6.dir, f));
   const ts = readJson("test_summary.json"), parity = readJson("onnx_parity.json");
   const testRows = rows.filter((r) => r.split === "test");
   const correct = testRows.filter((r) => r.predicted === r.superPop).length;
@@ -125,7 +134,7 @@ if (step6) {
 
   evaluation = {
     runId: step6.runId,
-    source: `data/training_model/cloudModel/6_test_model/${step6.runId}/`,
+    source: `cloud/6_test_model/results/${step6.runId}/`,
     people: testRows.length,
     correct,
     accuracy: ts?.accuracy ?? correct / testRows.length,
@@ -144,16 +153,31 @@ if (step6) {
   };
 }
 
+// The split used by this run was validated against an earlier audit run (Step 2 input manifest).
+const baselineSplitRunId = manifest?.staged_inputs?.baseline_train?.original_uri?.match(/results\/([^/]+)\//)?.[1] ?? null;
+
 const count = (filter) => rows.filter(filter).reduce((m, r) => { m[r.superPop] = (m[r.superPop] || 0) + 1; return m; }, {});
 const summaryOut = {
   generatedAt: new Date().toISOString(),
-  panel: { file: "integrated_call_samples_v3.20130502.ALL.panel", sha256: panelSha, verifiedAgainstTrainingSummary: !!summary.population_panel_sha256 },
+  panel: { file: "integrated_call_samples_v3.20130502.ALL.panel", source: `cloud/3_audit_pop_and_relatives/input/${run.runId}/population.panel`, sha256: panelSha, verifiedAgainst: panelChecks },
   train: { n: train.length, byGroup: count((r) => r.split === "train") },
   test: { n: test.length, byGroup: count((r) => r.split === "test"), evaluation },
-  trainingRun: summary.cohort_run_id ? { cohort: summary.cohort, cohortRunId: summary.cohort_run_id, trainingKeepSha256: summary.training_keep_sha256 } : null,
+  trainingRun: {
+    runId: run.runId,
+    source: `cloud/5_fit_pca_and_classifier/results/${run.runId}/`,
+    baselineSplitRunId,
+    ...(training ? {
+      selectedMarkers: training.selected_markers ?? null,
+      bestParameters: training.best_parameters ?? null,
+      cvAccuracy: training.cv_accuracy ?? null,
+      cvBalancedAccuracy: training.cv_balanced_accuracy ?? null,
+      sklearnVersion: training.sklearn_version ?? null,
+    } : {}),
+  },
 };
 
 writeFileSync(out, JSON.stringify({ summary: summaryOut, rows }));
 console.log(`Wrote ${out}`);
 console.log(JSON.stringify({ ...summaryOut, test: { ...summaryOut.test, evaluation: evaluation ? { ...evaluation, confusion: "…" } : null } }, null, 2));
-if (!evaluation) console.log("No Step 6 predictions found under data/training_model/cloudModel/6_test_model/ — test rows carry known labels only.");
+if (!evaluation) console.log(`No Step 6 predictions under cloud/6_test_model/results/${run.runId}/ — test rows carry known labels only.`);
+if (!training) console.log(`No cloud/5_fit_pca_and_classifier/results/${run.runId}/training_summary.json — trainingRun has provenance only (see cloud/README.md).`);

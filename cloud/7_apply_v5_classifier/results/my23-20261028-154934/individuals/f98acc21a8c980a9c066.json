@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "cCD7lg==",
+      "generation": "1793217481155578",
+      "md5Hash": "xek/BzYDOxpzKucOz9O6gg==",
+      "size": "16838149"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+    "file_index": 0,
+    "file_name": "huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+    "object_name": "geneticFiles/huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+    "participant_id": "huC7BB3B",
+    "participant_index": 121,
+    "source_metadata": {
+      "crc32c": "cCD7lg==",
+      "generation": "1783715033234745",
+      "md5Hash": "xek/BzYDOxpzKucOz9O6gg==",
+      "size": "16838149"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt"
+  },
+  "file_name": "huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+  "onnx_python_probability_difference": 3.925123404080466e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "huC7BB3B",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9920217599199197,
+    "called_model_markers": 332985,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 2645,
+    "possible_opposite_strand": 0,
+    "rows": 638466
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 1.076634603691673e-08,
+    "AMR": 1.6146438353015213e-10,
+    "EAS": 8.700998255228853e-12,
+    "EUR": 0.9999954700469971,
+    "SAS": 4.479804829315981e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "f98acc21a8c980a9c066",
+  "training_people": 2003
+}

@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "xeAeEQ==",
+      "generation": "1793217467219474",
+      "md5Hash": "Rl5ufqpxmAryAw7E2TLvzQ==",
+      "size": "16838350"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+    "file_index": 1,
+    "file_name": "huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+    "object_name": "geneticFiles/huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+    "participant_id": "huC41B6C",
+    "participant_index": 153,
+    "source_metadata": {
+      "crc32c": "xeAeEQ==",
+      "generation": "1783715076217576",
+      "md5Hash": "Rl5ufqpxmAryAw7E2TLvzQ==",
+      "size": "16838350"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt"
+  },
+  "file_name": "huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+  "onnx_python_probability_difference": 6.0528433376561e-09,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "huC41B6C",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9909135055099907,
+    "called_model_markers": 332613,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 34,
+    "incompatible_fraction_of_matched_coordinates": 0.00010129206972469411,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 3016,
+    "possible_opposite_strand": 1,
+    "rows": 638480
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 2.45850506619405e-10,
+    "AMR": 2.430905754469137e-10,
+    "EAS": 5.580388581782891e-12,
+    "EUR": 0.9999995231628418,
+    "SAS": 4.824091774935368e-07
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "45b94034a9c0374835df",
+  "training_people": 2003
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "output_root": "gs://all23_0710/ancestry/my23_v5_ancestry_model",
+  "reference_root": "gs://ref1000g/phase3",
+  "train_samples": 2003,
+  "test_samples": 501,
+  "expected_v5_files": 74,
+  "expected_participants": 885,
+  "expected_genotype_files": 1018,
+  "threads": 4,
+  "plink_memory_mb": 4096,
+  "qc": {"max_missing_fraction": 0.02, "min_maf": 0.01, "ld_window": "200kb", "ld_r2": 0.5},
+  "onnx_probability_atol": 0.0001,
+  "minimum_called_fraction": 0.90,
+  "maximum_incompatible_fraction": 0.01,
+  "sources": {
+    "manifest": "gs://ref1000g/ancestry/1_prepared_data/input/v5_manifest.json",
+    "train": "gs://ref1000g/ancestry/1_prepared_data/input/train2003.txt",
+    "test": "gs://ref1000g/ancestry/1_prepared_data/input/test501.txt",
+    "panel": "gs://ref1000g/phase3/integrated_call_samples_v3.20130502.ALL.panel",
+    "kinship": "gs://ref1000g/ancestry/relatives/input/deg2_phase3.kin0",
+    "chip_report": "gs://all23_0710/chip_manifests/chip_match_results/chip_match_results.json",
+    "participants": "gs://all23_0710/updatedParticipantsList/NEW_participants_1020_consolidated_with_build_and_profile_07102026_2053.json",
+    "raw_root": "gs://all23_0710"
+  },
+  "baseline_split": {
+    "train": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/train2003.keep",
+    "test": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/test501.keep"
+  },
+  "expected_sha256": {
+    "manifest": "53466424c9caa5c48d6d3844edb6a780e0a001eac5588af8f516be19e7679663",
+    "kinship": "7ed156e82bab448cace2908bd5cffcdaca9bec48c32df4602cc5675520375010"
+  }
+}

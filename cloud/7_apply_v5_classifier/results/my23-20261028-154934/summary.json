@@ -1,0 +1,18 @@
+{
+  "chip_report_sha256": "74a1f1a2142117576fc3babc63ba818352fc25e140c22ae9b79857ac83fa103d",
+  "classified": 74,
+  "files": 74,
+  "max_onnx_python_probability_difference": 1.642504754872931e-06,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "participants_sha256": "c38e8362a7fd8375b1c642e888a6eefc890416bba4e5ced48cc0b2b71596e16e",
+  "people": 72,
+  "predicted_group_counts_by_file": {
+    "AFR": 1,
+    "AMR": 7,
+    "EAS": 2,
+    "EUR": 63,
+    "SAS": 1
+  },
+  "run_id": "my23-20261028-154934",
+  "skipped": 0
+}

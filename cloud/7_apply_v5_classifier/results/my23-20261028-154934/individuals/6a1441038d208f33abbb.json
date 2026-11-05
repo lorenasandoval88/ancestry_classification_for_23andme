@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "7uuxFA==",
+      "generation": "1793217233229321",
+      "md5Hash": "WRQyJsKjquU5OJ739wmqcg==",
+      "size": "16839145"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+    "file_index": 0,
+    "file_name": "hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+    "object_name": "geneticFiles/hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+    "participant_id": "hu8550FF",
+    "participant_index": 45,
+    "source_metadata": {
+      "crc32c": "7uuxFA==",
+      "generation": "1783714914301820",
+      "md5Hash": "WRQyJsKjquU5OJ739wmqcg==",
+      "size": "16839145"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt"
+  },
+  "file_name": "hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+  "onnx_python_probability_difference": 4.809416309647929e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu8550FF",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9858250685955855,
+    "called_model_markers": 330905,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 4725,
+    "possible_opposite_strand": 0,
+    "rows": 638507
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 1.3108923668792016e-10,
+    "AMR": 2.3118774256092323e-11,
+    "EAS": 2.5637135643574727e-12,
+    "EUR": 0.9999994039535522,
+    "SAS": 5.478023012983613e-07
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "6a1441038d208f33abbb",
+  "training_people": 2003
+}

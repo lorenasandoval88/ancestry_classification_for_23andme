@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {markerIndex,parseText} from '../browser/classifier.mjs';
+const index=markerIndex([[1,10,'A','C'],[1,20,'T','G'],[1,30,'C','A'],[1,40,'G','A'],[1,50,'A','G']]);
+const r=parseText('# genome build 37\nrsid chromosome position genotype\na 1 10 AC\nb 1 20 TT\nc 1 30 --\nd 1 40 GG\ne 1 40 AA\nf 1 50 CC\n',index);
+assert.deepEqual(Array.from(r.values).map(x=>Number.isNaN(x)?null:x),[1,2,null,null,null]);
+assert.deepEqual(r.builds,['37']);
+assert.equal(r.qc.conflicting_duplicates,1);
+assert.equal(r.qc.incompatible_alleles,1);
+assert.equal(r.qc.possible_opposite_strand,1);
+assert.equal(r.qc.called_model_markers,2);
+assert.equal(markerIndex([[1,10,'A','C'],[1,10,'A','G']]).unique.size,0);
+console.log('Browser dosage, missingness, duplicate, allele, and build checks passed');

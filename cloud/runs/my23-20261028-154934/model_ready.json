@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "model": "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934",
+  "run_id": "my23-20261028-154934",
+  "test_people": 501,
+  "test_results": "gs://all23_0710/ancestry/my23_v5_ancestry_model/6_test_model/results/my23-20261028-154934",
+  "training_people": 2003
+}

@@ -1,0 +1,9 @@
+{
+  "genotypes_copied": false,
+  "overlap": 0,
+  "sample_order_preserved": true,
+  "source_test_sha256": "419c2880e3e1a4e727f8e6881743c8260d09060b637cd5dfe7f650fa6d16d47a",
+  "source_train_sha256": "0057dd84cc46018c8338192cdcb253360c81fba343600b27b6ddfa2642527b50",
+  "test_people": 501,
+  "training_people": 2003
+}

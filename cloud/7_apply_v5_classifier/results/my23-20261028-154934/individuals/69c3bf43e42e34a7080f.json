@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "kUMoSg==",
+      "generation": "1793217679920847",
+      "md5Hash": "snbbPYiGwUwphNuUoLBA8A==",
+      "size": "16838170"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+    "file_index": 0,
+    "file_name": "huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+    "object_name": "geneticFiles/huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+    "participant_id": "huF80F84",
+    "participant_index": 102,
+    "source_metadata": {
+      "crc32c": "kUMoSg==",
+      "generation": "1783715008986668",
+      "md5Hash": "snbbPYiGwUwphNuUoLBA8A==",
+      "size": "16838170"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt"
+  },
+  "file_name": "huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+  "onnx_python_probability_difference": 1.8525720846263027e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "huF80F84",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9847048974715712,
+    "called_model_markers": 330529,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 34,
+    "incompatible_fraction_of_matched_coordinates": 0.00010129206972469411,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 5100,
+    "possible_opposite_strand": 0,
+    "rows": 638468
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 2.7091437981852096e-09,
+    "AMR": 2.1506343927946148e-10,
+    "EAS": 1.873480884317935e-11,
+    "EUR": 0.9999960660934448,
+    "SAS": 3.912492047675187e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "69c3bf43e42e34a7080f",
+  "training_people": 2003
+}

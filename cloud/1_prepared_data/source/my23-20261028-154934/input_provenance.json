@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "v5_manifest_source_filename": "v5_manifest (1).zip",
+  "v5_manifest_source_sha256": "17e968f2ea131f6900ab5557f9e489a3c8a502b66e958175105cf0c051c60bc9",
+  "v5_manifest_json_member": "v5_manifest.json",
+  "v5_manifest_json_size_bytes": 225264404,
+  "v5_manifest_json_sha256": "53466424c9caa5c48d6d3844edb6a780e0a001eac5588af8f516be19e7679663",
+  "v5_manifest_metadata": {
+    "chipVersion": "v5",
+    "genomeBuild": "37",
+    "generatedAt": "2026-09-29T02:14:17.647Z",
+    "mode": "core",
+    "minimumPresence": 0.95,
+    "successfulFileCount": 64,
+    "failedFileCount": 0,
+    "variantCount": 622753
+  },
+  "autosomal_position_count": 601871,
+  "autosomal_counts_by_chromosome": {
+    "1": 48388,
+    "2": 50887,
+    "3": 42204,
+    "4": 38715,
+    "5": 36390,
+    "6": 43216,
+    "7": 33661,
+    "8": 31157,
+    "9": 25875,
+    "10": 29982,
+    "11": 30339,
+    "12": 28814,
+    "13": 21654,
+    "14": 19520,
+    "15": 18622,
+    "16": 19999,
+    "17": 18975,
+    "18": 17423,
+    "19": 14434,
+    "20": 14537,
+    "21": 8402,
+    "22": 8677
+  },
+  "positions_file": "v5_autosomal_b37.tsv.gz",
+  "positions_file_sha256": "f37359a5f59a589acdff40389b4859d992dc9961aed2b76beba0513b51565195",
+  "limitations": [
+    "The supplied v5 manifest contains positions and aliases but no assayed REF/ALT or strand fields.",
+    "This stage validates GRCh37 positions and 1000 Genomes biallelic A/C/G/T REF/ALT alleles.",
+    "Allele/strand harmonization against an actual 23andMe genotype export is deferred until a personal profile is loaded."
+  ]
+}

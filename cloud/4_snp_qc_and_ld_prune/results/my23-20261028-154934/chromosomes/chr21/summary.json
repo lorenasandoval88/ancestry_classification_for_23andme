@@ -1,0 +1,9 @@
+{
+  "after_pruning": 5084,
+  "after_qc": 6160,
+  "chromosome": 21,
+  "initial_snps": 8288,
+  "selected_markers_sha256": "484c5eef93415c9449f8353d058b975e034384d3d051eda7ace3afb82990d8c4",
+  "test_people_used": 0,
+  "training_people": 2003
+}

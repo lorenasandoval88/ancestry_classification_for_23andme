@@ -1,0 +1,40 @@
+{
+  "broad_groups": 5,
+  "note": "All 2003 training people are retained by design. Known train/train relatives share CV groups. Cross-split relatives are reported, not removed.",
+  "population_panel_sha256": "b4023dc6ee2d62ee89c8d4d347db4d348e65518d66d346574cdae7a4bbd76858",
+  "populations": 26,
+  "populations_missing_from_test": [],
+  "populations_missing_from_train": [],
+  "published_kinship_summary": {
+    "all_sample_ids": 2504,
+    "close_pairs_with_both_people_in_split": 15,
+    "close_pairs_with_one_or_both_people_outside_split": 0,
+    "cross_split_pairs": 5,
+    "cross_split_people": 10,
+    "input_sha256": {
+      "deg2_phase3.kin0": "7ed156e82bab448cace2908bd5cffcdaca9bec48c32df4602cc5675520375010",
+      "test.keep": "a631ce82f88af0a0d48f5e0c5aa18b773c97ee992c0b0473f5bf3e25a948862c",
+      "train.keep": "f6368f31c239e4f00c303825de1eb09337a31035f078ce45acbd984289d33df9"
+    },
+    "note": "KINSHIP ranges use PLINK cutoffs 0.177 and 0.0884; check pairs before changing the saved split.",
+    "review_needed": true,
+    "source": "PLINK 2 resources: original 1000 Genomes Phase 3 deg2_phase3.kin0",
+    "source_rows": 15,
+    "source_url": "https://www.cog-genomics.org/plink/2.0/resources",
+    "test_samples": 501,
+    "test_test_pairs": 0,
+    "train_samples": 2003,
+    "train_test_overlap": 0,
+    "train_train_pairs": 10
+  },
+  "related_test_people": [
+    "HG02429",
+    "HG03998",
+    "NA19913",
+    "NA20317",
+    "NA20359"
+  ],
+  "test_people": 501,
+  "training_people": 2003,
+  "training_people_removed": 0
+}

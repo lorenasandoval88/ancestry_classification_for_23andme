@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "BHShvQ==",
+      "generation": "1793217193938334",
+      "md5Hash": "Uk41pyTgngORHUhJhTYDvA==",
+      "size": "16647162"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+    "file_index": 0,
+    "file_name": "hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+    "object_name": "geneticFiles/hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+    "participant_id": "hu7ECB9C",
+    "participant_index": 8,
+    "source_metadata": {
+      "crc32c": "BHShvQ==",
+      "generation": "1783714861541530",
+      "md5Hash": "Uk41pyTgngORHUhJhTYDvA==",
+      "size": "16647162"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt"
+  },
+  "file_name": "hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+  "onnx_python_probability_difference": 5.399588141052902e-07,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu7ECB9C",
+  "predicted_group": "SAS",
+  "qc": {
+    "called_fraction": 0.9911041729353548,
+    "called_model_markers": 332677,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 2953,
+    "possible_opposite_strand": 0,
+    "rows": 631968
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 7.594505579966437e-10,
+    "AMR": 5.411753822848198e-10,
+    "EAS": 2.3623438494269067e-07,
+    "EUR": 0.28392207622528076,
+    "SAS": 0.7160776853561401
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "14979c2db6aece92e7bc",
+  "training_people": 2003
+}

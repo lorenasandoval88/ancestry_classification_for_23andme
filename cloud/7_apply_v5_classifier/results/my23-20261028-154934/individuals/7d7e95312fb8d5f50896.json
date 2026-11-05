@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "5+tOIw==",
+      "generation": "1793217168097309",
+      "md5Hash": "tRuuVO/+IRj7JjJhoWwibg==",
+      "size": "16838205"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu794D40_3566_genome.txt",
+    "file_index": 0,
+    "file_name": "hu794D40_3566_genome.txt",
+    "object_name": "geneticFiles/hu794D40_3566_genome.txt",
+    "participant_id": "hu794D40",
+    "participant_index": 85,
+    "source_metadata": {
+      "crc32c": "5+tOIw==",
+      "generation": "1783714986458144",
+      "md5Hash": "tRuuVO/+IRj7JjJhoWwibg==",
+      "size": "16838205"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu794D40_3566_genome.txt"
+  },
+  "file_name": "hu794D40_3566_genome.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu794D40_3566_genome.txt",
+  "onnx_python_probability_difference": 3.7559077070703495e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu794D40",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9921707188459854,
+    "called_model_markers": 333035,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 34,
+    "incompatible_fraction_of_matched_coordinates": 0.00010129206972469411,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 2594,
+    "possible_opposite_strand": 0,
+    "rows": 638468
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 1.0366568936603926e-08,
+    "AMR": 7.707446486593383e-11,
+    "EAS": 5.7861445669493694e-12,
+    "EUR": 0.9999982118606567,
+    "SAS": 1.7401531522409641e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "7d7e95312fb8d5f50896",
+  "training_people": 2003
+}

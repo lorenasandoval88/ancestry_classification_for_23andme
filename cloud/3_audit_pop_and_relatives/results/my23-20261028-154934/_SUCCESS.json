@@ -1,0 +1,50 @@
+{
+  "complete": true,
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "objects": {
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/all_close_pairs.tsv": {
+      "crc32c": "0m8BPg==",
+      "generation": "1793215421069224",
+      "md5Hash": "cMNSsHrYkVqVRzO9IWJU0g==",
+      "size": "910"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/audit_summary.json": {
+      "crc32c": "bMm/gQ==",
+      "generation": "1793215429837867",
+      "md5Hash": "ivOFBM+3uVbhduw3DeOklg==",
+      "size": "1543"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/broad_group_counts.tsv": {
+      "crc32c": "uYBH6g==",
+      "generation": "1793215418122038",
+      "md5Hash": "5sCV+QNdmiUbKElJ8jZMfw==",
+      "size": "135"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/cross_split_pairs.tsv": {
+      "crc32c": "7PHV5Q==",
+      "generation": "1793215423930792",
+      "md5Hash": "0zjj0Az6wh6tV7Qv7Ih7JQ==",
+      "size": "339"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/population_counts.tsv": {
+      "crc32c": "9AX4Pg==",
+      "generation": "1793215415196361",
+      "md5Hash": "pUA++X7dj23bb3T/8JERSg==",
+      "size": "463"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/related_test_ids.txt": {
+      "crc32c": "7IM+mw==",
+      "generation": "1793215426898381",
+      "md5Hash": "BOWdDz8O4dO+uodxxvaTJw==",
+      "size": "40"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/results/my23-20261028-154934/train2003_cv_groups.tsv": {
+      "crc32c": "XUOF0Q==",
+      "generation": "1793215412232129",
+      "md5Hash": "94DHnEx9VqeKnaWPlT6Qmw==",
+      "size": "32058"
+    }
+  },
+  "run_id": "my23-20261028-154934",
+  "step": 3
+}

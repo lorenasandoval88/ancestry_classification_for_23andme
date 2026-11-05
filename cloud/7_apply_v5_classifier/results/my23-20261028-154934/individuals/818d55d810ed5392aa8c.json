@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "+7BInA==",
+      "generation": "1793216947900773",
+      "md5Hash": "EWlEFAlWeE31G79tCszyrg==",
+      "size": "16838110"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+    "file_index": 0,
+    "file_name": "hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+    "object_name": "geneticFiles/hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+    "participant_id": "hu39A63C",
+    "participant_index": 135,
+    "source_metadata": {
+      "crc32c": "+7BInA==",
+      "generation": "1783715051559956",
+      "md5Hash": "EWlEFAlWeE31G79tCszyrg==",
+      "size": "16838110"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu39A63C_3243_genome_v5_Full_20180116123109.txt"
+  },
+  "file_name": "hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+  "onnx_python_probability_difference": 3.0136578010875326e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu39A63C",
+  "predicted_group": "AMR",
+  "qc": {
+    "called_fraction": 0.9844278338690889,
+    "called_model_markers": 330436,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 5194,
+    "possible_opposite_strand": 1,
+    "rows": 638463
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 3.9037854548951145e-06,
+    "AMR": 0.9999960660934448,
+    "EAS": 2.83429695797338e-22,
+    "EUR": 0.0,
+    "SAS": 8.322800685328538e-16
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "818d55d810ed5392aa8c",
+  "training_people": 2003
+}

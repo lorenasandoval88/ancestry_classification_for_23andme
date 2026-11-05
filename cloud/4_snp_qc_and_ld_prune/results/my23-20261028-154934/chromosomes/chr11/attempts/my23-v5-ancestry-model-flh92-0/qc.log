@@ -1,0 +1,36 @@
+PLINK v2.0.0-a.6.9 AVX2 (29 Jan 2025)
+Options in effect:
+  --geno 0.02
+  --keep /tmp/qc-chr11-jxj9u6p7/train.keep
+  --maf 0.01
+  --make-pgen vzs
+  --memory 4096
+  --out /tmp/qc-chr11-jxj9u6p7/qc
+  --pfile /tmp/qc-chr11-jxj9u6p7/chr11 vzs
+  --threads 4
+
+Hostname: localhost
+Working directory: /app
+Start time: Wed Oct 28 19:29:11 2026
+
+Random number seed: 1793215751
+32094 MiB RAM detected, ~31001 available; reserving 4096 MiB for main
+workspace.
+Using up to 4 compute threads.
+2504 samples (0 females, 0 males, 2504 ambiguous; 2504 founders) loaded from
+/tmp/qc-chr11-jxj9u6p7/chr11.psam.
+29257 variants loaded from /tmp/qc-chr11-jxj9u6p7/chr11.pvar.zst.
+Note: No phenotype data present.
+--keep: 2003 samples remaining.
+2003 samples (0 females, 0 males, 2003 ambiguous; 2003 founders) remaining
+after main filters.
+Calculating allele frequencies... done.
+--geno: 0 variants removed due to missing genotype data.
+8417 variants removed due to allele frequency threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+20840 variants remaining after main filters.
+Writing /tmp/qc-chr11-jxj9u6p7/qc.psam ... done.
+Writing /tmp/qc-chr11-jxj9u6p7/qc.pvar.zst ... done.
+Writing /tmp/qc-chr11-jxj9u6p7/qc.pgen ... done.
+
+End time: Wed Oct 28 19:29:11 2026

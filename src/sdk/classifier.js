@@ -8,7 +8,7 @@
 //                               minimum_called_fraction, maximum_incompatible_fraction, model_sha256, markers_sha256, run_id }
 //   model/pca_reference.json  (optional) PC scores of reference people for the PCA plot
 //
-// The older scripts/export_onnx.py layout ({ n_markers, markers: ["chr:pos:ref:alt"] }, nested
+// The older hand-built export layout ({ n_markers, markers: ["chr:pos:ref:alt"] }, nested
 // coverage_rules, pc_scores output) is still accepted; normalizeMeta() maps both onto one shape.
 //
 // Missing-value imputation happens inside the ONNX graph (fitted training means), so the
@@ -71,7 +71,7 @@ async function fetchJson(name, opts) {
   return bytes === null ? null : JSON.parse(new TextDecoder().decode(bytes));
 }
 
-/** Map the browser-export metadata and the export_onnx.py metadata onto one shape. */
+/** Map the browser-export metadata and the older hand-built export metadata onto one shape. */
 function normalizeMeta(raw) {
   const sha = (k) => raw.artifacts?.[k]?.sha256 || null;
   const build = raw.required_build || (raw.genome_build ? `GRCh${String(raw.genome_build).replace(/^GRCh/i, "")}` : "GRCh37");
@@ -170,7 +170,7 @@ async function loadOrt() {
 }
 
 /**
- * Accepts the browser export {genome_build, sites:[[chrom,pos,ref,alt],…]}, export_onnx.py's
+ * Accepts the browser export {genome_build, sites:[[chrom,pos,ref,alt],…]}, the older
  * {markers:[...]} / a bare array of "chr:pos:ref:alt" strings, or columnar {chrom,pos,ref,alt}.
  */
 function parseMarkers(json) {

@@ -1,0 +1,22 @@
+{
+  "test": {
+    "baseline_file_sha256": "a631ce82f88af0a0d48f5e0c5aa18b773c97ee992c0b0473f5bf3e25a948862c",
+    "baseline_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/test501.keep",
+    "input_file_sha256": "419c2880e3e1a4e727f8e6881743c8260d09060b637cd5dfe7f650fa6d16d47a",
+    "membership_matches": true,
+    "people": 501,
+    "same_order": true,
+    "sorted_ids_sha256": "f74ae3583db1f4f474f453b399ea1744968505d5c271a8a1fac2685e2e7a961b"
+  },
+  "total_people": 2504,
+  "train": {
+    "baseline_file_sha256": "f6368f31c239e4f00c303825de1eb09337a31035f078ce45acbd984289d33df9",
+    "baseline_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/train2003.keep",
+    "input_file_sha256": "0057dd84cc46018c8338192cdcb253360c81fba343600b27b6ddfa2642527b50",
+    "membership_matches": true,
+    "people": 2003,
+    "same_order": true,
+    "sorted_ids_sha256": "1229a2cc7c79cbcab2886e59d54b682ddbbefd14e86a093cf22d6a5ad142315e"
+  },
+  "train_test_overlap": 0
+}

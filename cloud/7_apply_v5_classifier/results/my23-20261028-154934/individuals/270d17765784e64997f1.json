@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "hFqROA==",
+      "generation": "1793217546436439",
+      "md5Hash": "L0WRX4WC2BDPuUOTS0XOPQ==",
+      "size": "16840315"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+    "file_index": 0,
+    "file_name": "huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+    "object_name": "geneticFiles/huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+    "participant_id": "huE30B6E",
+    "participant_index": 37,
+    "source_metadata": {
+      "crc32c": "hFqROA==",
+      "generation": "1783714898895057",
+      "md5Hash": "L0WRX4WC2BDPuUOTS0XOPQ==",
+      "size": "16840315"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt"
+  },
+  "file_name": "huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+  "onnx_python_probability_difference": 3.926554936750648e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "huE30B6E",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9858369853096707,
+    "called_model_markers": 330909,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 33,
+    "incompatible_fraction_of_matched_coordinates": 9.831289120337958e-05,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 4721,
+    "possible_opposite_strand": 1,
+    "rows": 638547
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 1.1457039310325268e-11,
+    "AMR": 8.382817107133178e-09,
+    "EAS": 2.664319112555269e-11,
+    "EUR": 0.999996542930603,
+    "SAS": 3.4094280181307113e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "270d17765784e64997f1",
+  "training_people": 2003
+}

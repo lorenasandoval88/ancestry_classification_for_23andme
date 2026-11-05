@@ -1,0 +1,8 @@
+.gcloudignore
+.git
+.venv/
+.deployment/
+inputs/
+**/__pycache__/
+node_modules/
+*.zip

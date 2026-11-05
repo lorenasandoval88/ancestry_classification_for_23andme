@@ -1,0 +1,26 @@
+PLINK v2.0.0-a.6.9 AVX2 (29 Jan 2025)
+Options in effect:
+  --indep-pairwise 200kb 0.5
+  --memory 4096
+  --out /tmp/qc-chr13-ze49a4_x/ld
+  --pfile /tmp/qc-chr13-ze49a4_x/qc vzs
+  --threads 4
+
+Hostname: localhost
+Working directory: /app
+Start time: Wed Oct 28 19:30:12 2026
+
+Random number seed: 1793215812
+32094 MiB RAM detected, ~30967 available; reserving 4096 MiB for main
+workspace.
+Using up to 4 compute threads.
+2003 samples (0 females, 0 males, 2003 ambiguous; 2003 founders) loaded from
+/tmp/qc-chr13-ze49a4_x/qc.psam.
+15345 variants loaded from /tmp/qc-chr13-ze49a4_x/qc.pvar.zst.
+Note: No phenotype data present.
+Calculating allele frequencies... done.
+--indep-pairwise (1 compute thread): 2936/15345 variants removed.
+Variant lists written to /tmp/qc-chr13-ze49a4_x/ld.prune.in and
+/tmp/qc-chr13-ze49a4_x/ld.prune.out .
+
+End time: Wed Oct 28 19:30:12 2026

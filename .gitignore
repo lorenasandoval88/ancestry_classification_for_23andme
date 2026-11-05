@@ -1,0 +1,26 @@
+﻿# cloud/ mirrors gs://all23_0710/ancestry/my23_v5_ancestry_model/. Everything is tracked except:
+
+# -- too large for git / GitHub Pages (stay in the bucket; present in a local mirror only)
+cloud/1_prepared_data/input/
+cloud/1_prepared_data/results/
+cloud/7_apply_v5_classifier/input/test/
+
+# -- re-packs or copies of files that already have a canonical home
+cloud/*/results/*/artifacts.zip
+cloud/6_test_model/results/*/browser/
+cloud/7_apply_v5_classifier/results/*/browser/
+cloud/runs/*/pca_reference/predictions.tsv
+
+# -- aborted run attempt (only stray inputs were staged)
+cloud/**/my23-20261028-153511/
+
+# Cloud deployment state written by deploy.sh
+.deployment/
+
+# Tooling
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db

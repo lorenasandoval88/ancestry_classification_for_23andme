@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "oMDZDg==",
+      "generation": "1793216764699819",
+      "md5Hash": "4mFTADKKZ49vXATCA5Ixog==",
+      "size": "16838041"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+    "file_index": 0,
+    "file_name": "hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+    "object_name": "geneticFiles/hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+    "participant_id": "hu0B4CF6",
+    "participant_index": 124,
+    "source_metadata": {
+      "crc32c": "oMDZDg==",
+      "generation": "1783715036738890",
+      "md5Hash": "4mFTADKKZ49vXATCA5Ixog==",
+      "size": "16838041"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt"
+  },
+  "file_name": "hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+  "onnx_python_probability_difference": 3.5127882158647594e-07,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu0B4CF6",
+  "predicted_group": "AMR",
+  "qc": {
+    "called_fraction": 0.99059473340821,
+    "called_model_markers": 332506,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 34,
+    "incompatible_fraction_of_matched_coordinates": 0.00010129206972469411,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 3123,
+    "possible_opposite_strand": 1,
+    "rows": 638463
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 0.02671143040060997,
+    "AMR": 0.9430369734764099,
+    "EAS": 7.131586698960746e-08,
+    "EUR": 9.623035293770954e-05,
+    "SAS": 0.03015531599521637
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "cd6adbde7db72cd4f08e",
+  "training_people": 2003
+}

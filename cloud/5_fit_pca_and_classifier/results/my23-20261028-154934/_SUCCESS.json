@@ -1,0 +1,44 @@
+{
+  "complete": true,
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "objects": {
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/artifacts.zip": {
+      "crc32c": "IM84TA==",
+      "generation": "1793216460570888",
+      "md5Hash": "za0/XeZSrKkQTiykh1M7Xw==",
+      "size": "23905331"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/cv_scores.json": {
+      "crc32c": "vz8Vuw==",
+      "generation": "1793216470814944",
+      "md5Hash": "RMVvwZ0W8dnK7t9puLoZcQ==",
+      "size": "2997"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/model.joblib": {
+      "crc32c": "DC7PXw==",
+      "generation": "1793216464328691",
+      "md5Hash": "3MtdrpTLxyL3tn1579YV/g==",
+      "size": "22032050"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/model_checksums.json": {
+      "crc32c": "oOiMew==",
+      "generation": "1793216476762877",
+      "md5Hash": "fIeRaTMCapfNBYySqImZEg==",
+      "size": "177"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/selected_markers.tsv": {
+      "crc32c": "NwX4Ug==",
+      "generation": "1793216467676357",
+      "md5Hash": "RzEg13PJh5G4WXxVgzRVIQ==",
+      "size": "5924223"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/5_fit_pca_and_classifier/results/my23-20261028-154934/training_summary.json": {
+      "crc32c": "/LlkJw==",
+      "generation": "1793216473755864",
+      "md5Hash": "Ke5+UQnNfWP5y+10/3315A==",
+      "size": "1059"
+    }
+  },
+  "run_id": "my23-20261028-154934",
+  "step": 5
+}

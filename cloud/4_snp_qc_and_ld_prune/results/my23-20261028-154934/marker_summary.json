@@ -1,0 +1,215 @@
+{
+  "chromosomes": [
+    {
+      "after_pruning": 26524,
+      "after_qc": 33311,
+      "chromosome": 1,
+      "initial_snps": 47141,
+      "selected_markers_sha256": "560046b097560805a31f381e8854e25b3607a3a085159cb91aeaad5572069be9",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 27073,
+      "after_qc": 34819,
+      "chromosome": 2,
+      "initial_snps": 49188,
+      "selected_markers_sha256": "64c25d6530643cdde021ee802a55dfcd39dfa7adc9cd40af41a14dae8149be66",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 23175,
+      "after_qc": 29601,
+      "chromosome": 3,
+      "initial_snps": 41455,
+      "selected_markers_sha256": "bc7ecc94eae95816a83af3c2e55d31933e7f661e7e4577cb194c1a8b8b843bf6",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 22007,
+      "after_qc": 27727,
+      "chromosome": 4,
+      "initial_snps": 38367,
+      "selected_markers_sha256": "32ebf1539f3385f30bca8ecb01824d9b32f311a8d7e07630c9d9823f04d21ceb",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 20427,
+      "after_qc": 25346,
+      "chromosome": 5,
+      "initial_snps": 35681,
+      "selected_markers_sha256": "30d092c49f832ef084001615b780838eb088baf57ef01f5b9308a7ce57484527",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 21044,
+      "after_qc": 32447,
+      "chromosome": 6,
+      "initial_snps": 42629,
+      "selected_markers_sha256": "3a475b3730d95c51c3852db52e9d625bf394f258a75be33990a8b4cb4482c936",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 19055,
+      "after_qc": 23977,
+      "chromosome": 7,
+      "initial_snps": 33073,
+      "selected_markers_sha256": "0dc12c0cdfc1b24b413c668bba9c941a1484640ddf805fdd76ab36c2128c5dd9",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 17502,
+      "after_qc": 21932,
+      "chromosome": 8,
+      "initial_snps": 30868,
+      "selected_markers_sha256": "bd8f74d29c29c33143f3854631c5050a745e15ecbe481924c48c75f524e2defe",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 15170,
+      "after_qc": 18729,
+      "chromosome": 9,
+      "initial_snps": 25381,
+      "selected_markers_sha256": "904df8bbaf6bef4063c434833a230c4cf4dbc10ddb85c544c9991ae161c29a87",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 17168,
+      "after_qc": 21673,
+      "chromosome": 10,
+      "initial_snps": 29627,
+      "selected_markers_sha256": "a54b839b2dd960f33f0a8bf2cb75fb4294015f80ceb2388fe162db1eb7521574",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 16464,
+      "after_qc": 20840,
+      "chromosome": 11,
+      "initial_snps": 29257,
+      "selected_markers_sha256": "54920abc495fba3b0a8cda80745ef1f67eda879396ac739d1cbaf31261d769c3",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 16502,
+      "after_qc": 20545,
+      "chromosome": 12,
+      "initial_snps": 28214,
+      "selected_markers_sha256": "b1d1de8d1efbb006a4043072206a22c391232e5a88d1d4a3dd76b2f2db35d03a",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 12409,
+      "after_qc": 15345,
+      "chromosome": 13,
+      "initial_snps": 20799,
+      "selected_markers_sha256": "428d701c036682bf6a1a145538a7152d896824d9910e63bfe9d9ce393ead295e",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 11237,
+      "after_qc": 13924,
+      "chromosome": 14,
+      "initial_snps": 19044,
+      "selected_markers_sha256": "3384e776052ca0fb50bb0f0f070bce92ef79e1c37a24655e9bf1fcd581e38547",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 10752,
+      "after_qc": 13324,
+      "chromosome": 15,
+      "initial_snps": 18083,
+      "selected_markers_sha256": "78c775922a6aab2f58c871331d2f47cd71a56f1c8bacea49eed959e8659416fd",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 11283,
+      "after_qc": 14028,
+      "chromosome": 16,
+      "initial_snps": 19418,
+      "selected_markers_sha256": "c47e5e58f08aab39195d9bd60456a4566b26f2139839683d8ffaa9c350901993",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 10253,
+      "after_qc": 12550,
+      "chromosome": 17,
+      "initial_snps": 17792,
+      "selected_markers_sha256": "f3182b1522683581e353c29a4dcc859c2bed0249b2431fc40556de0008307206",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 10563,
+      "after_qc": 12809,
+      "chromosome": 18,
+      "initial_snps": 17208,
+      "selected_markers_sha256": "37597a8e5377d5200728b9be337e82b464d6f3b4736c9ec85ba3eb46ead9e6c4",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 8142,
+      "after_qc": 10070,
+      "chromosome": 19,
+      "initial_snps": 13781,
+      "selected_markers_sha256": "b47a488df0c8b9b8e98bbd8ad635c0fdea36a8ebf98e1da2a2646a732fc4fa77",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 8637,
+      "after_qc": 10578,
+      "chromosome": 20,
+      "initial_snps": 14318,
+      "selected_markers_sha256": "e18ffbd00b775d258cf04e06d47dacf68e25922de22abcb86e1127b1d9b17fed",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 5084,
+      "after_qc": 6160,
+      "chromosome": 21,
+      "initial_snps": 8288,
+      "selected_markers_sha256": "484c5eef93415c9449f8353d058b975e034384d3d051eda7ace3afb82990d8c4",
+      "test_people_used": 0,
+      "training_people": 2003
+    },
+    {
+      "after_pruning": 5192,
+      "after_qc": 6301,
+      "chromosome": 22,
+      "initial_snps": 8450,
+      "selected_markers_sha256": "6890cdfb3597b6eccede2a7df86f7d1ece4f0dd1484044e779616ab70f67aa77",
+      "test_people_used": 0,
+      "training_people": 2003
+    }
+  ],
+  "counts": {
+    "after_pruning": 335663,
+    "after_qc": 426036,
+    "initial_snps": 588062
+  },
+  "settings": {
+    "ld_r2": 0.5,
+    "ld_window": "200kb",
+    "max_missing_fraction": 0.02,
+    "min_maf": 0.01
+  },
+  "test_people_used": 0,
+  "training_people": 2003
+}

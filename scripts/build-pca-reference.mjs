@@ -1,20 +1,22 @@
 // Build model/pca_reference.json (reference-people PC coordinates for the PCA tab) from the
 // per-person PC score tables exported by the cloud run.
 //
-//   node scripts/build-pca-reference.mjs
+//   node scripts/build-pca-reference.mjs [--run <run_id>]
 //   node scripts/build-pca-reference.mjs --train path/train2003_pcs.tsv --test path/test501_pcs.tsv \
 //        [--predictions path/predictions.tsv] [--v5 path/v5_files_pcs.tsv] [--evr path/pca_summary.json] \
 //        [--out model/pca_reference.json]
 //   node scripts/build-pca-reference.mjs --pcs path/reference_pcs.tsv      # one table for both cohorts
 //
-// Without flags, files are discovered by name anywhere under data/training_model/cloudModel/:
-//   train2003_pcs.tsv   Step 5  sample + PC1..PCk for the 2,003 training people
-//   test501_pcs.tsv     Step 6  sample + PC1..PCk for the 501 test people
+// Without flags, files are discovered in the bucket mirror cloud/ for the run named in
+// model/metadata.json: PC tables and pca_summary.json under runs/<run>/pca_reference/,
+// predictions.tsv under 6_test_model/results/<run>/ (see cloud/README.md):
+//   train2003_pcs.tsv   sample + PC1..PCk for the 2,003 training people
+//   test501_pcs.tsv     sample + PC1..PCk for the 501 test people
 //   reference_pcs.tsv   alternative: both cohorts in one table, with a split column (train/test)
 //                       or no split column (assigned from data/reference_cohort.json)
 //   predictions.tsv     Step 6  (optional) sample + predicted group (+ probabilities) for the 501
 //   v5_files_pcs.tsv    Step 7  (optional) file/participant + PC1..PCk (+ predicted) for PGP v5 files
-//   pca_summary.json    Step 5  (optional) { n_components, explained_variance_ratio: [...] }
+//   pca_summary.json    (optional) { pc_count, explained_variance_ratio: [...], run_id, marker_count }
 //
 // Column names are flexible: the ID column is sample/IID/id/participant/file (else the first column),
 // PC columns are PC1..PCk, an optional predicted-group column is predicted_group/prediction/label.
@@ -22,7 +24,7 @@
 // Known labels and populations come from data/reference_cohort.json; every ID in the PC tables
 // must be in the cohort, and counts must match (2,003 / 501).
 //
-// Cloud-side export (Step 5/6, same fitted PCA for both splits — do not refit on the 501):
+// Cloud-side export (same fitted PCA for both splits — do not refit on the 501):
 //
 //   import joblib, json, pandas as pd
 //   bundle = joblib.load("model.joblib")
@@ -39,9 +41,9 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseArgs, resolveRun } from "./lib/run-dir.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const cloud = resolve(root, "data/training_model/cloudModel");
 const cohortPath = resolve(root, "data/reference_cohort.json");
 const metadataPath = resolve(root, "model/metadata.json");
 
@@ -56,17 +58,7 @@ const KNOWN_RE = /^(reference_group|actual_group|known_group|super_pop|superpop|
 
 // ---------------------------------------------------------------------------
 
-function parseArgs(argv) {
-  const a = {};
-  for (let i = 0; i < argv.length; i++) {
-    const m = argv[i].match(/^--([a-z0-9-]+)$/i);
-    if (!m) throw new Error(`Unexpected argument: ${argv[i]}`);
-    a[m[1]] = argv[i + 1] && !argv[i + 1].startsWith("--") ? argv[++i] : true;
-  }
-  return a;
-}
-
-function findByName(name, dir = cloud) {
+function findByName(name, dir) {
   if (!existsSync(dir)) return null;
   const hits = [];
   (function walk(d) {
@@ -174,19 +166,33 @@ if (args.help || args.h) {
   process.exit(0);
 }
 
-const trainPath = args.train ? resolve(args.train) : findByName("train2003_pcs.tsv");
-const testPath = args.test ? resolve(args.test) : findByName("test501_pcs.tsv");
-const combinedPath = args.pcs ? resolve(args.pcs) : (!trainPath && !testPath ? findByName("reference_pcs.tsv") : null);
-const predPath = args.predictions ? resolve(args.predictions) : findByName("predictions.tsv");
-const v5Path = args.v5 ? resolve(args.v5) : findByName("v5_files_pcs.tsv");
-const evrPath = args.evr ? resolve(args.evr) : findByName("pca_summary.json");
+// Discovery roots in the bucket mirror, resolved only when a table is not given explicitly.
+const needsRun = !(args.pcs || (args.train && args.test));
+let run;
+const found = (name, where = "pca") => {
+  if (run === undefined) {
+    try { run = resolveRun(root, args.run); }
+    catch (e) { run = null; if (needsRun) throw e; }
+  }
+  if (!run) return null;
+  const dir = where === "step6" ? run.results("6_test_model") : join(run.runDir, "pca_reference");
+  return findByName(name, dir);
+};
+
+const trainPath = args.train ? resolve(args.train) : found("train2003_pcs.tsv");
+const testPath = args.test ? resolve(args.test) : found("test501_pcs.tsv");
+const combinedPath = args.pcs ? resolve(args.pcs) : (!trainPath && !testPath ? found("reference_pcs.tsv") : null);
+const predPath = args.predictions ? resolve(args.predictions) : found("predictions.tsv", "step6");
+const v5Path = args.v5 ? resolve(args.v5) : found("v5_files_pcs.tsv");
+const evrPath = args.evr ? resolve(args.evr) : found("pca_summary.json");
 const outPath = resolve(args.out || "model/pca_reference.json");
 
 if (!combinedPath && (!trainPath || !testPath)) {
+  const where = run ? `${rel(join(run.runDir, "pca_reference"))}/` : "cloud/runs/<run_id>/pca_reference/";
   console.error([
     "Could not find the PC score tables.",
-    `  train: ${trainPath ? relative(root, trainPath) : "train2003_pcs.tsv not found under data/training_model/cloudModel/ (or pass --train)"}`,
-    `  test:  ${testPath ? relative(root, testPath) : "test501_pcs.tsv not found under data/training_model/cloudModel/ (or pass --test)"}`,
+    `  train: ${trainPath ? rel(trainPath) : `train2003_pcs.tsv not found under ${where} (or pass --train)`}`,
+    `  test:  ${testPath ? rel(testPath) : `test501_pcs.tsv not found under ${where} (or pass --test)`}`,
     "  or one combined table with a split column: reference_pcs.tsv (or pass --pcs)",
     "Run with --help for the expected layout and the cloud-side export snippet.",
   ].join("\n"));

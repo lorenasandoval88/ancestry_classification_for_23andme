@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "CtMi1Q==",
+      "generation": "1793217012392900",
+      "md5Hash": "piFxJ6sfUBCDcKfvhHeRUQ==",
+      "size": "16974500"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+    "file_index": 0,
+    "file_name": "hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+    "object_name": "geneticFiles/hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+    "participant_id": "hu50801B",
+    "participant_index": 10,
+    "source_metadata": {
+      "crc32c": "CtMi1Q==",
+      "generation": "1783714864443317",
+      "md5Hash": "piFxJ6sfUBCDcKfvhHeRUQ==",
+      "size": "16974500"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt"
+  },
+  "file_name": "hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+  "onnx_python_probability_difference": 8.747738866610177e-09,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "hu50801B",
+  "predicted_group": "EUR",
+  "qc": {
+    "called_fraction": 0.9926920750872155,
+    "called_model_markers": 333210,
+    "conflicting_duplicates": 1,
+    "duplicate_rows": 168,
+    "incompatible_alleles": 35,
+    "incompatible_fraction_of_matched_coordinates": 0.00010427124824600865,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 2418,
+    "possible_opposite_strand": 1,
+    "rows": 643535
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 8.936269502157757e-10,
+    "AMR": 7.544466162912045e-10,
+    "EAS": 1.1839750534148319e-11,
+    "EUR": 0.9999988079071045,
+    "SAS": 1.1992168538199621e-06
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "5c034b273dd1b515b14f",
+  "training_people": 2003
+}

@@ -1,0 +1,9 @@
+{
+  "name": "my23-v5-ancestry-model",
+  "private": true,
+  "version": "1.0.1",
+  "scripts": {
+    "preview": "node index.js --dry-run",
+    "check": "node --check index.js && python tests/test_pipeline.py"
+  }
+}

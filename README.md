@@ -15,6 +15,71 @@ The same model can be used two ways:
   reference-group prediction. Inference runs entirely in the browser; the genotype file is
   never uploaded to a server.
 
+## Repository layout
+
+Four kinds of content, each with one home: the **site** (`index.html`, `src/`, `model/`, `vendor/`,
+`data/`), the **build scripts** that derive the generated files (`scripts/`), the **cloud pipeline**
+mirrored verbatim from its bucket (`cloud/`), and **docs**. `<run>` = `my23-20261028-154934`, the
+run named in `model/metadata.json`.
+
+```
+ancestry_classification_for_v5_23andme_files/
+│
+├── index.html                          web app (tabs: Upload & Classify · Participants · Inspect Genotypes · PCA)
+├── src/
+│   ├── app/app.js                      web-app logic
+│   ├── css/style.css
+│   └── sdk/                            npm package: index.js · classifier.js · parse23andme.js
+│
+├── model/                              published browser bundle — Step 6 export of <run>
+│   ├── model.onnx                      imputer → scaler → PCA(10) → logistic → softmax
+│   ├── markers.json                    335,663 markers (chrom, pos, ref, alt) in model column order
+│   ├── metadata.json                   classes · coverage rules · SHA-256 of model/markers · run_id
+│   └── pca_reference.json              reference people's PC1–10 for the PCA tab           (generated)
+├── vendor/onnxruntime-web/             pinned ONNX Runtime Web 1.22.0 (WASM build, no CDN)
+│
+├── data/                               what the site fetches at runtime
+│   ├── demo_genotype_file/genome_23.txt    real anonymised v5 export behind "Try a demo file"
+│   ├── participants_catalog.json           PGP participants · files · predictions             (generated)
+│   └── reference_cohort.json               2,504 1000 Genomes people · labels · test evaluation  (generated)
+│
+├── scripts/                            Node — regenerate the three (generated) files from cloud/
+│   ├── build-catalog.mjs               7_apply results + chip report        → data/participants_catalog.json
+│   ├── build-cohort.mjs                split lists · panel · audit · Step 6 → data/reference_cohort.json
+│   ├── build-pca-reference.mjs         runs/<run>/pca_reference + Step 6    → model/pca_reference.json
+│   └── lib/run-dir.mjs                 resolves cloud/<step>/{input,results,source}/<run>/
+│
+├── cloud/                              mirror of gs://all23_0710/ancestry/my23_v5_ancestry_model/  → cloud/README.md
+│   ├── source/<run>/                   pipeline as deployed: pipeline.py · step runner · export_onnx.py · deploy.sh ·
+│   │                                   Dockerfile · config · README (how to deploy) · VALIDATION · browser/ · tests/
+│   ├── 1_prepared_data/                source/<run>/ prepare.js + v5 positions          ⊘ input/ results/ (658 MB)
+│   ├── 2_split_the_samples/            input: train2003.txt · test501.txt   results: .keep lists · split_summary
+│   ├── 3_audit_pop_and_relatives/      input: population.panel · kin0       results: population_counts · relatives · audit_summary
+│   ├── 4_snp_qc_and_ld_prune/          results: marker_summary.json · chromosomes/chrN/ (kept / removed / pruned · PLINK logs)
+│   ├── 5_fit_pca_and_classifier/       results: training_summary · cv_scores · selected_markers.tsv · model.joblib · checksums
+│   ├── 6_test_model/                   results: predictions · confusion_matrix · test_summary · onnx_parity   ⊘ browser/ (= model/)
+│   ├── 7_apply_v5_classifier/          input: participants.json · chip_match_results.json      ⊘ input/test/files/ (74 raw files, 1.2 GB)
+│   │                                   results: summary · merge_audit · predictions.json · individuals/ · consolidated_participants.json
+│   └── runs/<run>/                     model_ready.json · pca_reference/ (train2003_pcs · test501_pcs · pca_summary)
+│
+├── docs/                               23andMe_v5_single_model_pipeline_steps_1_to_7.docx — workflow plan
+└── package.json · LICENSE · .gitignore · .gitattributes
+```
+
+Every `<step>/` also has `source/<run>/step.py` (that step's code) and `input/<run>/input_manifest.json`
+(URI, md5 and size of every staged input). `⊘` marks bucket content present in a local mirror but
+excluded from git for size or because it duplicates `model/`/`vendor/` — the full list is in
+[`cloud/README.md`](./cloud/README.md).
+
+| I want to… | Look in |
+|------------|---------|
+| classify a file from my own code | `src/sdk/` — see *Installation (SDK)* |
+| change the page or its styling | `index.html`, `src/app/`, `src/css/` |
+| know what the model is and how it was validated | `model/metadata.json`, `cloud/5_fit_pca_and_classifier/results/<run>/training_summary.json`, `cloud/6_test_model/results/<run>/test_summary.json` |
+| see a step's exact inputs, outputs and code | `cloud/<step>/{input,results,source}/<run>/` |
+| regenerate the catalog / cohort / PCA reference | `scripts/` → `npm run build:data` |
+| redeploy or rerun the pipeline | `cloud/source/<run>/README.md` |
+
 ## What the classifier does
 
 | Step | Action for a 23andMe file |
@@ -36,33 +101,46 @@ preprocessing parameters, and model version.
 | Training cohort | 2,003 people (AFR 524 · AMR 272 · EAS 400 · EUR 408 · SAS 399) |
 | Held-out test cohort | 501 people (AFR 137 · AMR 75 · EAS 104 · EUR 95 · SAS 90) |
 | Relatedness audit | 15 published close-relative pairs were found among the training/test people |
-| Ancestry model inputs | 335,663 markers in the published browser bundle (selected using training people only); 10 principal components; logistic regression C = 1.0. The training summary archived under `data/training_model/cloudModel/` is from the preceding run (`train-v5-20261027-151656`, 335,632 markers) |
+| Ancestry model inputs | 335,663 markers in the published browser bundle (selected using training people only); 10 principal components; logistic regression C = 1.0 — run `my23-20261028-154934`, whose bucket is mirrored under [`cloud/`](./cloud/README.md) |
 | Training-only cross-validation | 3-fold, balanced accuracy 0.995, accuracy 0.996 |
 | Test accuracy | 500 of 501 reference labels correct |
 | Personal-file application | 74 files from 72 participants (23andMe v5) |
 
 ### How the model was built (steps 1–7)
 
-The reference model is produced by a seven-step cloud workflow; steps 1–6 run once to build and
-test the model, step 7 applies the frozen model to personal files. Nothing in step 7 (or in this
-web app) retrains or re-selects markers.
+The reference model is produced by a seven-step cloud workflow run on Cloud Run against
+`gs://all23_0710/ancestry/my23_v5_ancestry_model/`; that bucket — source, inputs and results of
+every step — is mirrored in [`cloud/`](./cloud/README.md). Steps 1–6 run once to build and test
+the model, step 7 applies the frozen model to personal files. Nothing in step 7 (or in this web
+app) retrains or re-selects markers.
 
-| Step | What it does |
-|------|--------------|
-| 1 Prepare reference genotypes | Read the Phase 3 reference files, match the verified 23andMe v5 positions on chromosomes 1–22, check genome build and alleles, and save one prepared PLINK genotype set per chromosome for all 2,504 people |
-| 2 Verify the sample split | Confirm 2,003 unique training IDs and 501 unique test IDs, no overlap, every ID in the reference panel; save normalised lists and checksums (`train2003.txt`, `test501.txt`) |
-| 3 Audit populations | Join IDs to the population panel and report training/test counts by population and broad reference group; record the relatedness audit (15 published close pairs) |
-| 4 Marker QC and LD pruning | Using **only** the 2,003 training people, remove markers with excess missingness or very low allele frequency and LD-prune correlated markers; save one ordered panel with the counted (REF) allele per marker — 335,663 markers for the published model |
-| 5 Train one PCA + classifier | Fit missing-value filling (mean), scaling, PCA (10 components) and logistic regression (C = 1.0) on the training people; save the full fitted pipeline, marker order and counted alleles, and a training summary with input hashes |
-| 6 Test the frozen model | Apply the saved pipeline to the 501 test people and compare with the known 1000 Genomes labels: 500 / 501 correct, with per-group accuracy, a confusion table and coverage checks. Test people never influence marker selection, PCA or tuning |
-| 7 Apply to v5 files | For compatible personal files (v5, GRCh37): match positions and alleles to the saved marker list, check usable-marker coverage, apply the same pipeline, and return the predicted group with quality checks and model version. Files with insufficient usable data receive a reason instead of an assignment |
+| Step | What it does | Saved result |
+|------|--------------|--------------|
+| 1 Prepare reference genotypes | Read the Phase 3 reference files, match the verified 23andMe v5 positions on chromosomes 1–22, check genome build and alleles, and save one prepared PLINK genotype set per chromosome for all 2,504 people | Prepared chromosomes and variant maps (cloud only) |
+| 2 Verify the sample split | Confirm 2,003 unique training IDs and 501 unique test IDs, no overlap, every ID in the reference panel; save normalised lists and checksums | `train2003.txt`, `test501.txt`, `split_summary.json` |
+| 3 Audit populations | Join IDs to the population panel and report training/test counts by population and broad reference group; record the relatedness audit (15 published close pairs) and group known training relatives for cross-validation | `population_counts.tsv`, `broad_group_counts.tsv`, relative-pair tables, `audit_summary.json` |
+| 4 Marker QC and LD pruning | Using **only** the 2,003 training people, remove markers with excess missingness or very low allele frequency and LD-prune correlated markers; save one ordered panel with the counted (REF) allele per marker — 335,663 markers for the published model | Per-chromosome selected-marker lists and `marker_summary.json` |
+| 5 Train one PCA + classifier | Compare PCA and logistic settings in three training-only folds, then fit missing-value filling (mean), scaling, PCA (10 components) and logistic regression (C = 1.0) on all 2,003 training people | `model.joblib` (cloud only), `selected_markers.tsv`, `cv_scores.json`, `training_summary.json` |
+| 6 Test the frozen model | Project the 501 test people through the saved pipeline and compare with the known 1000 Genomes labels: 500 / 501 correct, with per-group accuracy, a confusion table and coverage checks; export the pipeline to ONNX and verify Python ↔ ONNX parity. Test people never influence marker selection, PCA or tuning | `predictions.tsv`, `test_summary.json`, `onnx_parity.json`, browser bundle (`model/`) |
+| 7 Apply to v5 files | For compatible personal files (v5, GRCh37): match positions and alleles to the saved marker list, check usable-marker coverage, apply the same pipeline, and return the predicted group with quality checks and model version. Files with insufficient usable data receive a reason instead of an assignment; results are merged into the participant catalog | `summary.json`, `merge_audit.json`, `predictions.json`, `individuals/*.json`, `consolidated_participants.json`, `v5_build37_table.csv`, browser bundle |
+
+Where to find this run's results — paths are `cloud/<step>/results/my23-20261028-154934/…`,
+identical to the bucket (see [`cloud/README.md`](./cloud/README.md)):
+
+| Question | File |
+|----------|------|
+| How many SNPs were selected and which settings won? | `5_fit_pca_and_classifier/results/<run>/training_summary.json` |
+| How many of the 501 test labels were correct? | `6_test_model/results/<run>/test_summary.json` |
+| How many v5 files were classified or skipped? | `7_apply_v5_classifier/results/<run>/summary.json` |
+| Where are the reference people's PC coordinates? | `runs/<run>/pca_reference/train2003_pcs.tsv`, `test501_pcs.tsv` |
 
 This repository implements step 7 for the browser: the SDK reproduces the step-7 encoding
 (verified to give the identical 332,878 called markers and probabilities on the bundled demo file
 as the release's own `classifier.mjs`) and runs the exported pipeline with `onnxruntime-web`.
 
 The trained scikit-learn pipeline (`SimpleImputer → StandardScaler → PCA → LogisticRegression`,
-see `data/training_model/cloudModel/train_ancestry.py`) is exported to ONNX and checked for
+fitted by `cloud/5_fit_pca_and_classifier/source/<run>/step.py`) is exported to ONNX by
+`cloud/source/<run>/export_onnx.py` in step 6 and checked for
 agreement with the Python outputs so that the npm package and web app produce the same result
 as the original model.
 
@@ -80,8 +158,7 @@ The web app and SDK consume that release bundle from `model/` (currently run
 | `model/pca_reference.json` | PC scores of the reference people for the PCA plot, generated by `scripts/build-pca-reference.mjs` from the cloud export: `groups.train` (2,003, known labels), `groups.test` (501, known + predicted from Step 6), optional `groups.v5_files`, plus `explained_variance_ratio` (PC1 5.6 %, PC2 3.2 %, PC1–10 11.5 %) |
 
 The SDK verifies the SHA-256 of `markers.json` and `model.onnx` against `metadata.json` before
-creating the session, and also accepts the older
-[`scripts/export_onnx.py`](./scripts/export_onnx.py) layout (`{ n_markers, markers: ["chr:pos:ref:alt"] }`,
+creating the session, and also accepts the older hand-built export layout (`{ n_markers, markers: ["chr:pos:ref:alt"] }`,
 nested `coverage_rules`, extra `pc_scores` output). The current bundle does **not** emit
 `pc_scores`, so uploaded files are not placed on the PCA plot; the reference layers come from
 `pca_reference.json`.
@@ -108,12 +185,11 @@ json.dump({"n_components": int(pca.n_components_), "explained_variance_ratio": p
 ```
 
 Then drop `train2003_pcs.tsv`, `test501_pcs.tsv` and `pca_summary.json` (or one combined
-`reference_pcs.tsv` with a `split` column) anywhere under `data/training_model/cloudModel/` — the
-published run's export lives in `data/training_model/cloudModel/pca_reference/my23-20261028-154934/` —
-and run
+`reference_pcs.tsv` with a `split` column) into `cloud/runs/<run_id>/pca_reference/` for the run
+named in `model/metadata.json` — where the published run's export already lives — and run
 
 ```sh
-node scripts/build-pca-reference.mjs        # or pass --train/--test/--pcs/--predictions/--evr/--v5 paths
+node scripts/build-pca-reference.mjs        # or pass --run/--train/--test/--pcs/--predictions/--evr/--v5 paths
 ```
 
 [`scripts/build-pca-reference.mjs`](./scripts/build-pca-reference.mjs) joins the tables with
@@ -192,28 +268,23 @@ The landing page lives in [`index.html`](./index.html) (styles in `src/css/`, lo
 
 ### Data
 
+Paths below follow the *Repository layout* above; the three generated files are rebuilt from
+`cloud/` by `scripts/`.
+
 | File | Contents |
 |------|----------|
 | `data/demo_genotype_file/genome_23.txt` | Real, anonymised 23andMe v5 export (GRCh37, 631,455 variants, 16 MB) used by the *Try a demo file* button. The SDK encoder yields 332,847 called model markers on it — identical to the cloud pipeline's record for the same file |
-| `data/participantInfo_genotypeFiles_23me.json` | Full PGP participant / file catalog (12 MB) with chip classification, ancestry predictions and survey profiles |
-| `data/participants_catalog.json` | Slim, de-identified per-file catalog generated from the above for the web app (no names, zip codes or storage URLs) |
-| `data/training_model/cloudModel/2003train_501test_input/train2003.txt`, `test501.txt` | 1000 Genomes sample IDs of the 2,003-person training and 501-person test cohorts |
-| `data/training_model/cloudModel/2003train_501test_input/integrated_call_samples_v3.20130502.ALL.panel` | Public Phase 3 population panel (sample, pop, super_pop, gender); SHA-256 `b4023dc6…` matches `population_panel_sha256` in the training summary |
-| `data/reference_cohort.json` | Generated: the 2,504 reference people with split, population, super-population and sex, plus per-group counts (train: AFR 524 · AMR 272 · EAS 400 · EUR 408 · SAS 399; test: AFR 137 · AMR 75 · EAS 104 · EUR 95 · SAS 90). Test rows also carry the published model's `predicted` group and `probs`, and `summary.test.evaluation` holds accuracy, confusion, misclassified samples and ONNX parity for that run |
-| `data/training_model/cloudModel/model.joblib` | Bundle written by `train_ancestry.py`: `{"pipeline": SimpleImputer → StandardScaler → PCA(10) → LogisticRegression(C=1.0), "markers", "classes", …}` (sklearn 1.7.2) |
-| `data/training_model/cloudModel/train_ancestry.py` | Training script (PLINK `--export A` REF-allele dosages, grouped 3-fold CV, training-only fit) |
-| `data/training_model/cloudModel/*_selected_markers.tsv` | The 335,632 model markers of the Oct-27 training run (`chr:pos:ref:alt`) and the counted (REF) allele; the published bundle's 335,663-marker panel is in `model/markers.json` |
-| `data/training_model/cloudModel/*_training_summary.json` | Training provenance (cohort, CV accuracy 0.996, hashes) |
-| `data/training_model/cloudModel/6_test_model/<run_id>/` | Step 6 results for the published run (`my23-20261028-154934`): `predictions.tsv` (501 test people: known vs predicted group + probabilities), `confusion_matrix.tsv`, `by_actual_group.tsv`, `by_population.tsv`, `test_summary.json` (500/501, balanced accuracy 0.997), `onnx_parity.json` (Python ONNX Runtime vs scikit-learn, max \|Δp\| 4.4e-7), `input_manifest.json`, `_SUCCESS.json`, `step.py`. `build-cohort.mjs` merges these into `reference_cohort.json` so the Participants table shows known → predicted for test people and the model badge shows test accuracy + parity |
-| `data/training_model/cloudModel/cloud_instructions_steps/*.docx` | Plan for the single-model seven-step cloud workflow summarised in *How the model was built* |
+| `data/participants_catalog.json` | Generated by `build-catalog.mjs` from the Step 7 `consolidated_participants.json` + `chip_match_results.json`: slim per-file catalog for the web app (no real names, zip codes or storage-host URLs). The 74 PGP predictions (group, coverage, per-group probabilities) are the published run's Step 7 results |
+| `data/reference_cohort.json` | Generated by `build-cohort.mjs`: the 2,504 reference people with split, population, super-population and sex, plus per-group counts (train: AFR 524 · AMR 272 · EAS 400 · EUR 408 · SAS 399; test: AFR 137 · AMR 75 · EAS 104 · EUR 95 · SAS 90). Test rows also carry the published model's `predicted` group and `probs`; `summary.test.evaluation` holds accuracy, confusion, misclassified samples and ONNX parity, and `summary.trainingRun` the run provenance |
 | `model/` (published from the cloud run) | Browser model bundle: `model.onnx`, `markers.json`, `metadata.json`, `pca_reference.json` — see *Browser model bundle* above |
-| `data/training_model/cloudModel/pca_reference/<run_id>/` | Cloud PC-coordinate export for the published run: `train2003_pcs.tsv`, `test501_pcs.tsv` (IID, population, reference_group, PC1–PC10 from the frozen imputer → scaler → PCA), `pca_summary.json` (explained variance, run/marker provenance), `_SUCCESS.json`. Input to `build-pca-reference.mjs` |
+| `cloud/` | Verbatim mirror of the pipeline bucket for run `my23-20261028-154934` — code, staged inputs and results of all seven steps, plus the PC-coordinate export. What each folder holds, what is excluded from git and how to mirror a run: [`cloud/README.md`](./cloud/README.md) |
+| `docs/23andMe_v5_single_model_pipeline_steps_1_to_7.docx` | Plan for the single-model seven-step cloud workflow summarised in *How the model was built* |
 | `vendor/onnxruntime-web/` | Pinned ONNX Runtime Web 1.22.0 (`ort.wasm.min.mjs`, `ort-wasm-simd-threaded.{mjs,wasm}`) |
 
-Regenerate the slim catalog and the reference cohort after updating the inputs:
+Regenerate the slim catalog, the reference cohort and the PCA reference after updating the inputs:
 
 ```sh
-npm run build:data      # = build:catalog + build:cohort
+npm run build:data      # = build:catalog + build:cohort + build:pca
 ```
 
 To run it locally, serve the repo root with any static server, e.g.

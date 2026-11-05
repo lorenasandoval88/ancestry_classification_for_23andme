@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "objects": {
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "SUK5xQ==",
+      "generation": "1793215951960871",
+      "md5Hash": "MV2j0S8TNxjMDds2dl4DPA==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "2If+kw==",
+      "generation": "1793215948961773",
+      "md5Hash": "pNpUSqJsxzUvUGSiC8BtLA==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/ld_pruned_out.txt": {
+      "crc32c": "hAwhog==",
+      "generation": "1793215942853670",
+      "md5Hash": "Lfb9GxZP9r4hX9xiq//VWw==",
+      "size": "36362"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/qc_removed.txt": {
+      "crc32c": "TcmTww==",
+      "generation": "1793215939824313",
+      "md5Hash": "xRUSGReUttNe1ldTrFa3Mw==",
+      "size": "82996"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/selected_markers.txt": {
+      "crc32c": "H8wmJA==",
+      "generation": "1793215936803563",
+      "md5Hash": "Zm6TFghRQ5oC3xWJbkGTtA==",
+      "size": "161983"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/summary.json": {
+      "crc32c": "EMjhSA==",
+      "generation": "1793215945800162",
+      "md5Hash": "bMvgXGj54Lu3rWGYCeR/UQ==",
+      "size": "244"
+    }
+  },
+  "summary": {
+    "after_pruning": 10253,
+    "after_qc": 12550,
+    "chromosome": 17,
+    "initial_snps": 17792,
+    "selected_markers_sha256": "f3182b1522683581e353c29a4dcc859c2bed0249b2431fc40556de0008307206",
+    "test_people_used": 0,
+    "training_people": 2003
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ambiguous_model_sites": 0,
+  "copied_input": {
+    "copied_metadata": {
+      "crc32c": "x9mHkA==",
+      "generation": "1793217638392874",
+      "md5Hash": "aUoL5bdQDEwXZhcZY2qQyg==",
+      "size": "16838393"
+    },
+    "copied_uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/test/files/huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+    "file_index": 1,
+    "file_name": "huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+    "object_name": "geneticFiles/huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+    "participant_id": "huF6E783",
+    "participant_index": 155,
+    "source_metadata": {
+      "crc32c": "x9mHkA==",
+      "generation": "1783715079889051",
+      "md5Hash": "aUoL5bdQDEwXZhcZY2qQyg==",
+      "size": "16838393"
+    },
+    "source_uri": "gs://all23_0710/geneticFiles/huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt"
+  },
+  "file_name": "huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+  "interpretation": "Reference-group prediction, not self-reported race/ethnicity or ancestry percentages.",
+  "model": "my23_v5_ancestry_model",
+  "model_markers": 335663,
+  "model_sha256": "907f29d8145ceb34c9fcfeb209dee4b35af8df120a7919a46d31a9f8231ca8fa",
+  "object_name": "geneticFiles/huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+  "onnx_python_probability_difference": 2.992031900017622e-08,
+  "onnx_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "participant_id": "huF6E783",
+  "predicted_group": "AMR",
+  "qc": {
+    "called_fraction": 0.9885510169425883,
+    "called_model_markers": 331820,
+    "conflicting_duplicates": 0,
+    "duplicate_rows": 167,
+    "incompatible_alleles": 34,
+    "incompatible_fraction_of_matched_coordinates": 0.00010129206972469411,
+    "malformed_rows": 0,
+    "matched_coordinates": 335663,
+    "no_calls": 3809,
+    "possible_opposite_strand": 1,
+    "rows": 638480
+  },
+  "raw_header_builds": [
+    "37"
+  ],
+  "reasons": [],
+  "reference_group_probabilities": {
+    "AFR": 2.1756782189186197e-06,
+    "AMR": 0.9999978542327881,
+    "EAS": 8.932691703819094e-23,
+    "EUR": 0.0,
+    "SAS": 1.2403980919838516e-16
+  },
+  "run_id": "my23-20261028-154934",
+  "status": "classified",
+  "subject_id": "02e0ea59303fb539024a",
+  "training_people": 2003
+}

@@ -1,0 +1,16 @@
+id1	id2	kinship	king_range	reported_relationship	set1	set2
+HG02479	HG02429	0.258285	first_degree_range		train	test
+HG03899	HG03733	0.241776	first_degree_range		train	train
+HG03754	HG03750	0.245327	first_degree_range		train	train
+HG03998	HG03873	0.266077	first_degree_range		test	train
+NA19042	NA19027	0.120485	second_degree_range		train	train
+NA19334	NA19331	0.231258	first_degree_range		train	train
+NA20274	NA19625	0.126264	second_degree_range		train	train
+NA19913	NA19904	0.244756	first_degree_range		test	train
+NA20318	NA20317	0.244112	first_degree_range		train	test
+NA20321	NA20320	0.246132	first_degree_range		train	train
+NA20355	NA20334	0.24215	first_degree_range		train	train
+NA20362	NA20359	0.244061	first_degree_range		train	test
+NA20900	NA20882	0.24801	first_degree_range		train	train
+NA20900	NA20891	0.243472	first_degree_range		train	train
+NA21135	NA21109	0.115372	second_degree_range		train	train

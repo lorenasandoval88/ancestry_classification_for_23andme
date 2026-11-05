@@ -19,8 +19,9 @@
   "scripts": {
     "build:catalog": "node scripts/build-catalog.mjs",
     "build:cohort": "node scripts/build-cohort.mjs",
-    "build:data": "npm run build:catalog && npm run build:cohort",
+    "build:pca": "node scripts/build-pca-reference.mjs",
+    "build:data": "npm run build:catalog && npm run build:cohort && npm run build:pca",
     "serve": "npx http-server -p 8080 -c-1"
   },
-  "files": ["index.html", "src", "scripts", "model", "data/participants_catalog.json", "data/reference_cohort.json", "data/demo_genotype_file", "README.md"]
+  "files": ["index.html", "src", "model", "data/participants_catalog.json", "data/reference_cohort.json", "data/demo_genotype_file", "README.md", "LICENSE"]
 }

@@ -1,0 +1,938 @@
+{
+  "complete": true,
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "objects": {
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/_SUCCESS.json": {
+      "crc32c": "+FbXyw==",
+      "generation": "1793215467671297",
+      "md5Hash": "BdSs29V0V3yuhwqQmRBe4w==",
+      "size": "2163"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "FWeCrg==",
+      "generation": "1793215464673943",
+      "md5Hash": "G0x3nFhEKEQQklBvhMSKAQ==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "BR3wpw==",
+      "generation": "1793215461680170",
+      "md5Hash": "Fy7sfExV7JbXSfmAmDME7A==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/ld_pruned_out.txt": {
+      "crc32c": "Njh/3g==",
+      "generation": "1793215455306544",
+      "md5Hash": "JiD8FnTKAE5JKms0da/RHw==",
+      "size": "105314"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/qc_removed.txt": {
+      "crc32c": "LF/bLQ==",
+      "generation": "1793215452436069",
+      "md5Hash": "fqKKbzogdkemikE6nM1Aqg==",
+      "size": "214486"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/selected_markers.txt": {
+      "crc32c": "ZPSqlA==",
+      "generation": "1793215449320081",
+      "md5Hash": "54ea0IHmwTVy6zn5svHiXw==",
+      "size": "410867"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr1/summary.json": {
+      "crc32c": "n2Hp3w==",
+      "generation": "1793215458486604",
+      "md5Hash": "vE15GEdHwwPKX4ezZ6C8bQ==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/_SUCCESS.json": {
+      "crc32c": "ZzvFjQ==",
+      "generation": "1793215741297810",
+      "md5Hash": "5fGFRy0WpqQqB5xsKd+Rlg==",
+      "size": "2169"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "Xh5JXQ==",
+      "generation": "1793215738347443",
+      "md5Hash": "9R7bRqfYluYyWwuIkACLDg==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "AKDPVA==",
+      "generation": "1793215735326009",
+      "md5Hash": "KJcGbrBygftiMYm7RXyHtg==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/ld_pruned_out.txt": {
+      "crc32c": "02H5Eg==",
+      "generation": "1793215729505798",
+      "md5Hash": "4iUOPes7/liQohlCbJUTLQ==",
+      "size": "72821"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/qc_removed.txt": {
+      "crc32c": "dvzJ6w==",
+      "generation": "1793215726663986",
+      "md5Hash": "GPMKYMl5NgG90RsEGIcdwQ==",
+      "size": "128723"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/selected_markers.txt": {
+      "crc32c": "4wcwIw==",
+      "generation": "1793215723767056",
+      "md5Hash": "nb9gd1ZQfRuzY9MuXT+p7g==",
+      "size": "277837"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr10/summary.json": {
+      "crc32c": "0dpFSg==",
+      "generation": "1793215732421507",
+      "md5Hash": "C9yGKnTLRXcRy3MyZJl6Ag==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/_SUCCESS.json": {
+      "crc32c": "6kWSKA==",
+      "generation": "1793215771949262",
+      "md5Hash": "yIlpCZUumFq7nRCnl+4wvQ==",
+      "size": "2169"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "mAbsRg==",
+      "generation": "1793215768910735",
+      "md5Hash": "pqE7A11jArialRMfLjK6NA==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "oQii6Q==",
+      "generation": "1793215765856977",
+      "md5Hash": "7rcpl22kk0S1H/w4Kws7Yg==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/ld_pruned_out.txt": {
+      "crc32c": "PuHqiQ==",
+      "generation": "1793215759822520",
+      "md5Hash": "COfSPgo1/tRDzpx6WPkVVA==",
+      "size": "70737"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/qc_removed.txt": {
+      "crc32c": "SrUoqA==",
+      "generation": "1793215756789290",
+      "md5Hash": "3i6QVvxIeXGmU7d0lvUEQA==",
+      "size": "136129"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/selected_markers.txt": {
+      "crc32c": "jrorpA==",
+      "generation": "1793215753770484",
+      "md5Hash": "omexzeUUno+QZ9V85CQSlg==",
+      "size": "266913"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr11/summary.json": {
+      "crc32c": "5xBGVg==",
+      "generation": "1793215762854947",
+      "md5Hash": "Vmiz2hQpTfuMn/JEsWAjug==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/_SUCCESS.json": {
+      "crc32c": "z/C03w==",
+      "generation": "1793215801859147",
+      "md5Hash": "Ckf23ON/NV6QTjJavPCRpA==",
+      "size": "2169"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "J7x9Dg==",
+      "generation": "1793215798898140",
+      "md5Hash": "HD+bQbg4+/ywxOkue/oAog==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "y8AVPQ==",
+      "generation": "1793215795882188",
+      "md5Hash": "+viRuRCJ2+//xCIS11XkOQ==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/ld_pruned_out.txt": {
+      "crc32c": "MLdj1Q==",
+      "generation": "1793215790042152",
+      "md5Hash": "6kG4UMHWJ1+V0PDiKmhETA==",
+      "size": "65366"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/qc_removed.txt": {
+      "crc32c": "A7cFmA==",
+      "generation": "1793215787188972",
+      "md5Hash": "gsigEl8yaSGUZddO0FAKsQ==",
+      "size": "123943"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/selected_markers.txt": {
+      "crc32c": "za2Quw==",
+      "generation": "1793215784289536",
+      "md5Hash": "pF7sinZ1ByqsAb2BWcxC2g==",
+      "size": "267108"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr12/summary.json": {
+      "crc32c": "1p/C+Q==",
+      "generation": "1793215793018911",
+      "md5Hash": "q5azhWvHPZiS5oOhEvf+hQ==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/_SUCCESS.json": {
+      "crc32c": "vdfTJg==",
+      "generation": "1793215832689388",
+      "md5Hash": "XAxwjanq8RoGgSOHMLbugQ==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "+aJVbQ==",
+      "generation": "1793215829625343",
+      "md5Hash": "S57wkptG8js3visg+LyfjQ==",
+      "size": "865"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "E+bWQg==",
+      "generation": "1793215826476500",
+      "md5Hash": "KBHonKkAaagbm6Z5exePOA==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/ld_pruned_out.txt": {
+      "crc32c": "YLBbzA==",
+      "generation": "1793215820635715",
+      "md5Hash": "X3oDeywQLfB9ldFKEdnJog==",
+      "size": "47571"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/qc_removed.txt": {
+      "crc32c": "YF4fNA==",
+      "generation": "1793215817456690",
+      "md5Hash": "QjrA1WdP9QTyAjV3KgVvVw==",
+      "size": "88180"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/selected_markers.txt": {
+      "crc32c": "QuH78g==",
+      "generation": "1793215814163541",
+      "md5Hash": "SfQBknZQu4jD0ZBWZtUyYw==",
+      "size": "201354"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr13/summary.json": {
+      "crc32c": "g7uT3A==",
+      "generation": "1793215823590648",
+      "md5Hash": "inFQJzcAEish0uXBg6SxFA==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/_SUCCESS.json": {
+      "crc32c": "pfbarw==",
+      "generation": "1793215863164539",
+      "md5Hash": "cCsNfhQUZirtJ3RVBaGyDA==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "DPfjJQ==",
+      "generation": "1793215860153131",
+      "md5Hash": "cKj1KuEaNKcILJbHVX5Q2g==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "Qx48iA==",
+      "generation": "1793215856787432",
+      "md5Hash": "PaW/nBo2MdoyCGn4dMTziw==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/ld_pruned_out.txt": {
+      "crc32c": "idhJfg==",
+      "generation": "1793215851046376",
+      "md5Hash": "4s7fXk7FyVyCaS3QkNlz3Q==",
+      "size": "43202"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/qc_removed.txt": {
+      "crc32c": "gEoSRg==",
+      "generation": "1793215848151114",
+      "md5Hash": "O4fyidoFeV5LMNVUIytnvg==",
+      "size": "82297"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/selected_markers.txt": {
+      "crc32c": "zm1iEQ==",
+      "generation": "1793215845221129",
+      "md5Hash": "xuZBEfDSLjFRnA7R6+GDCw==",
+      "size": "180639"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr14/summary.json": {
+      "crc32c": "RZOYng==",
+      "generation": "1793215853867410",
+      "md5Hash": "mOxGU8KkDcLAC75mdOhfKg==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/_SUCCESS.json": {
+      "crc32c": "0L2kGg==",
+      "generation": "1793215893430864",
+      "md5Hash": "yXls11eqepxswlqmNeXGlg==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "CjCVpA==",
+      "generation": "1793215890368629",
+      "md5Hash": "lQ0Mv3ZS2pOk/63+2eMEbw==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "pITFKQ==",
+      "generation": "1793215887500929",
+      "md5Hash": "1DLMPzOfU42vGhCCRgGz5g==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/ld_pruned_out.txt": {
+      "crc32c": "u+e4lw==",
+      "generation": "1793215881649497",
+      "md5Hash": "8g1pQm+la7wcdRwnOzUm0Q==",
+      "size": "41287"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/qc_removed.txt": {
+      "crc32c": "V0uBVQ==",
+      "generation": "1793215878452219",
+      "md5Hash": "vydaNth7YZj8T1ciDPze4A==",
+      "size": "76278"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/selected_markers.txt": {
+      "crc32c": "W/RPGA==",
+      "generation": "1793215875470630",
+      "md5Hash": "uefb34jXXFFRkgXQZtvdmA==",
+      "size": "172633"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr15/summary.json": {
+      "crc32c": "aYKEow==",
+      "generation": "1793215884560140",
+      "md5Hash": "cBJYh6WmP7RMnzx0CxUTfg==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/_SUCCESS.json": {
+      "crc32c": "0SAetA==",
+      "generation": "1793215924171803",
+      "md5Hash": "cKxHpYUind8PPQkTTk2MjQ==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "V6SLJw==",
+      "generation": "1793215921154151",
+      "md5Hash": "FS+8V3iyEqK6L1f0+gnWXA==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "C4Pieg==",
+      "generation": "1793215918146817",
+      "md5Hash": "mhaiiDW9x4715M5jTXounw==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/ld_pruned_out.txt": {
+      "crc32c": "dEn8Zg==",
+      "generation": "1793215911991489",
+      "md5Hash": "HjPDO3i0LOxlnC4TuI40+A==",
+      "size": "43455"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/qc_removed.txt": {
+      "crc32c": "FW0hYg==",
+      "generation": "1793215908928584",
+      "md5Hash": "m5vqJE57qiILKzgHRu6YHQ==",
+      "size": "85203"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/selected_markers.txt": {
+      "crc32c": "lskbuA==",
+      "generation": "1793215905938896",
+      "md5Hash": "aCzfPRtej1IS9P0hLIBX1Q==",
+      "size": "178493"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr16/summary.json": {
+      "crc32c": "X6cy4w==",
+      "generation": "1793215915042099",
+      "md5Hash": "W6aEQCk5ukG+p95h2jdeFA==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/_SUCCESS.json": {
+      "crc32c": "u8n0hw==",
+      "generation": "1793215954979436",
+      "md5Hash": "z5zhqwxqzAcvMvz32d8OzA==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "SUK5xQ==",
+      "generation": "1793215951960871",
+      "md5Hash": "MV2j0S8TNxjMDds2dl4DPA==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "2If+kw==",
+      "generation": "1793215948961773",
+      "md5Hash": "pNpUSqJsxzUvUGSiC8BtLA==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/ld_pruned_out.txt": {
+      "crc32c": "hAwhog==",
+      "generation": "1793215942853670",
+      "md5Hash": "Lfb9GxZP9r4hX9xiq//VWw==",
+      "size": "36362"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/qc_removed.txt": {
+      "crc32c": "TcmTww==",
+      "generation": "1793215939824313",
+      "md5Hash": "xRUSGReUttNe1ldTrFa3Mw==",
+      "size": "82996"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/selected_markers.txt": {
+      "crc32c": "H8wmJA==",
+      "generation": "1793215936803563",
+      "md5Hash": "Zm6TFghRQ5oC3xWJbkGTtA==",
+      "size": "161983"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr17/summary.json": {
+      "crc32c": "EMjhSA==",
+      "generation": "1793215945800162",
+      "md5Hash": "bMvgXGj54Lu3rWGYCeR/UQ==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/_SUCCESS.json": {
+      "crc32c": "d4LK7w==",
+      "generation": "1793215985188465",
+      "md5Hash": "vEvYqHzDx7xHJWZtBh9DhQ==",
+      "size": "2168"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "CZ9wdQ==",
+      "generation": "1793215982251784",
+      "md5Hash": "KU8CgtOL33NKiJToQSxdXw==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "JkuaZw==",
+      "generation": "1793215979157753",
+      "md5Hash": "HQeDSfLAitd3Al0EtwyJQQ==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/ld_pruned_out.txt": {
+      "crc32c": "YDEINQ==",
+      "generation": "1793215973275021",
+      "md5Hash": "Zt7nMboJLocF2DTAsxVLIQ==",
+      "size": "35580"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/qc_removed.txt": {
+      "crc32c": "/XF0AQ==",
+      "generation": "1793215970296874",
+      "md5Hash": "zYEX+sguybv9c8/dD/2juw==",
+      "size": "69767"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/selected_markers.txt": {
+      "crc32c": "FAiFcw==",
+      "generation": "1793215967308413",
+      "md5Hash": "DYUR1fsJf2aWm0ZKVoHfYQ==",
+      "size": "166808"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr18/summary.json": {
+      "crc32c": "Oxs2/Q==",
+      "generation": "1793215976164659",
+      "md5Hash": "tGQnzTBnL3lvIFs8OfTGKw==",
+      "size": "244"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/_SUCCESS.json": {
+      "crc32c": "aivk3g==",
+      "generation": "1793216014839107",
+      "md5Hash": "03Ozqge5OKIBzM0we6L+/g==",
+      "size": "2167"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "TihJIw==",
+      "generation": "1793216011902141",
+      "md5Hash": "Moe7OPzHWaaiiJEXvQ66AQ==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "6cmrIw==",
+      "generation": "1793216009030721",
+      "md5Hash": "VglZedHSZHXc48cdp+TWiA==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/ld_pruned_out.txt": {
+      "crc32c": "2gZruQ==",
+      "generation": "1793216003268813",
+      "md5Hash": "InOQXD3T4X2ENws0xZbtKA==",
+      "size": "30488"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/qc_removed.txt": {
+      "crc32c": "ziszkA==",
+      "generation": "1793216000123543",
+      "md5Hash": "Bo1sHZdC4hrFNMm87WGI1Q==",
+      "size": "58665"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/selected_markers.txt": {
+      "crc32c": "ZVO9aw==",
+      "generation": "1793215997235149",
+      "md5Hash": "c0ADP2o9HgxJZxIAWKxpAQ==",
+      "size": "128217"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr19/summary.json": {
+      "crc32c": "1KdVwA==",
+      "generation": "1793216006164657",
+      "md5Hash": "FWqDrIhzTSGkztg//f1AIQ==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/_SUCCESS.json": {
+      "crc32c": "RxXBSQ==",
+      "generation": "1793215498503090",
+      "md5Hash": "C1lDKuGNmac8+7C8LBE/XQ==",
+      "size": "2163"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "C9R3HA==",
+      "generation": "1793215495600665",
+      "md5Hash": "CEjKanlo5LFGC6EMb+mcTw==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "7r2nbA==",
+      "generation": "1793215492654808",
+      "md5Hash": "xxkwzram+O1CvvT80ZBlWw==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/ld_pruned_out.txt": {
+      "crc32c": "EYLwCg==",
+      "generation": "1793215486775264",
+      "md5Hash": "+a4+Cj4rC+V0T8eF3R3OBQ==",
+      "size": "120324"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/qc_removed.txt": {
+      "crc32c": "NY0isw==",
+      "generation": "1793215483727911",
+      "md5Hash": "NFrhGgHaWtbAtHyxybajQQ==",
+      "size": "223607"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/selected_markers.txt": {
+      "crc32c": "hwB+xw==",
+      "generation": "1793215480805486",
+      "md5Hash": "pkSFGp6653lPG9wS4cMMBA==",
+      "size": "419761"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr2/summary.json": {
+      "crc32c": "BzY9uA==",
+      "generation": "1793215489720953",
+      "md5Hash": "EtuHLpMo6j9FKxBmVksoiw==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/_SUCCESS.json": {
+      "crc32c": "/cJ+gQ==",
+      "generation": "1793216044577471",
+      "md5Hash": "esjrssUBz2C+OFU9ibClQg==",
+      "size": "2167"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "+M0F7Q==",
+      "generation": "1793216041706933",
+      "md5Hash": "8lzHwOQrsJqDjcoWFQDGeQ==",
+      "size": "866"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "WZtjmg==",
+      "generation": "1793216038844693",
+      "md5Hash": "j9NlwlcU3B+gP4T5MPYHDw==",
+      "size": "1239"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/ld_pruned_out.txt": {
+      "crc32c": "W2GYqQ==",
+      "generation": "1793216032909486",
+      "md5Hash": "YZ6ULulBQgxArbfpOHpOIw==",
+      "size": "30698"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/qc_removed.txt": {
+      "crc32c": "Rpa6rA==",
+      "generation": "1793216029928716",
+      "md5Hash": "3XzC01bchn/hyhpHZjuiyQ==",
+      "size": "59174"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/selected_markers.txt": {
+      "crc32c": "2Sg7rA==",
+      "generation": "1793216027088532",
+      "md5Hash": "Ru3iXy7k6AE1SPSzjP7PjA==",
+      "size": "136138"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr20/summary.json": {
+      "crc32c": "8vg2lw==",
+      "generation": "1793216035858881",
+      "md5Hash": "wZnlon0EeyDKmT+SRQrRpw==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/_SUCCESS.json": {
+      "crc32c": "+4Or+A==",
+      "generation": "1793216074074548",
+      "md5Hash": "lZTYzRDQPDMWQMr3tTwhLA==",
+      "size": "2164"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "kPdjog==",
+      "generation": "1793216071190742",
+      "md5Hash": "YS+Y76Yii7ThPulhobiqww==",
+      "size": "864"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "T4QI+Q==",
+      "generation": "1793216068219907",
+      "md5Hash": "6SxZ2paIOJRcVQINhojtGg==",
+      "size": "1237"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/ld_pruned_out.txt": {
+      "crc32c": "wSP85g==",
+      "generation": "1793216062438219",
+      "md5Hash": "zBeVHfq0mYnNSG+mR6HI1A==",
+      "size": "17209"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/qc_removed.txt": {
+      "crc32c": "bIfdhA==",
+      "generation": "1793216059460673",
+      "md5Hash": "GhyH0e7BsIF2AFoKLTcbkQ==",
+      "size": "34048"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/selected_markers.txt": {
+      "crc32c": "3jER1Q==",
+      "generation": "1793216056594719",
+      "md5Hash": "UCSuyYo7bgc7Nu31MZsCwA==",
+      "size": "81317"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr21/summary.json": {
+      "crc32c": "QlUg0g==",
+      "generation": "1793216065357550",
+      "md5Hash": "dpbnDKHrJ9zh0/j+JWWsBQ==",
+      "size": "241"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/_SUCCESS.json": {
+      "crc32c": "SOOwbA==",
+      "generation": "1793216104364387",
+      "md5Hash": "k226EqAQzbPy/JRH7upa+w==",
+      "size": "2164"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "JfldNg==",
+      "generation": "1793216101378126",
+      "md5Hash": "QukQJHE3Ec6OMVO9dVrY+A==",
+      "size": "864"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "Yhs/fw==",
+      "generation": "1793216098387718",
+      "md5Hash": "zrxvnExJ+5tpsHOtjtcbrg==",
+      "size": "1237"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/ld_pruned_out.txt": {
+      "crc32c": "13m25A==",
+      "generation": "1793216092370273",
+      "md5Hash": "p3AckKgj61xZ2lTsk8kdKg==",
+      "size": "17744"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/qc_removed.txt": {
+      "crc32c": "dwBl7Q==",
+      "generation": "1793216089328642",
+      "md5Hash": "gM8DU86JlVCK0MerqfMtrA==",
+      "size": "34384"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/selected_markers.txt": {
+      "crc32c": "qMTx9Q==",
+      "generation": "1793216086275122",
+      "md5Hash": "OFzhoY83X20Mk8ftEdyA7w==",
+      "size": "83072"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr22/summary.json": {
+      "crc32c": "4OZ7uw==",
+      "generation": "1793216095437464",
+      "md5Hash": "Zb8Yi2zJ//9+VWvu2nscng==",
+      "size": "241"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/_SUCCESS.json": {
+      "crc32c": "y6iBBQ==",
+      "generation": "1793215529288779",
+      "md5Hash": "9UPEOvuk6/vegkn2TbPesw==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "SpRQ1g==",
+      "generation": "1793215526274979",
+      "md5Hash": "DfItELnaYkbj3XHqhmkl6w==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "xhtKXA==",
+      "generation": "1793215523346443",
+      "md5Hash": "s9uvJFQ8U6GEHOz8celA+w==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/ld_pruned_out.txt": {
+      "crc32c": "HWtseQ==",
+      "generation": "1793215517455016",
+      "md5Hash": "w6F4oBT6gWE1wJmJjRiCrQ==",
+      "size": "99356"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/qc_removed.txt": {
+      "crc32c": "kVzEVQ==",
+      "generation": "1793215514417579",
+      "md5Hash": "pUQQN0qilN2ldXhmMZAdTA==",
+      "size": "182892"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/selected_markers.txt": {
+      "crc32c": "5jwRSw==",
+      "generation": "1793215511376029",
+      "md5Hash": "0UgEmynJpnFcQ+yabVOA6g==",
+      "size": "356813"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr3/summary.json": {
+      "crc32c": "CF9M6Q==",
+      "generation": "1793215520394341",
+      "md5Hash": "uQQudPmLk7H6rm4ZGc5nTQ==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/_SUCCESS.json": {
+      "crc32c": "mlLQlA==",
+      "generation": "1793215559685280",
+      "md5Hash": "KyVo7/+Oj3gQkgV2r5t5pw==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "RbYiPw==",
+      "generation": "1793215556804764",
+      "md5Hash": "+2tXlR5ZWEOCia2oNSM7QA==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "DM6bow==",
+      "generation": "1793215553884366",
+      "md5Hash": "CTKx6EUoRtTMmiT+usWmMQ==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/ld_pruned_out.txt": {
+      "crc32c": "NkQerg==",
+      "generation": "1793215548029898",
+      "md5Hash": "fnCnhHHWMq0xlyYSrWch+A==",
+      "size": "88075"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/qc_removed.txt": {
+      "crc32c": "Hs2kxA==",
+      "generation": "1793215545074094",
+      "md5Hash": "KFsj3WpCyjKqVhR77q6K3A==",
+      "size": "163829"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/selected_markers.txt": {
+      "crc32c": "KFej4g==",
+      "generation": "1793215542110410",
+      "md5Hash": "jgA4d365SI4tcpNnQPpcOQ==",
+      "size": "338957"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr4/summary.json": {
+      "crc32c": "uRkDNQ==",
+      "generation": "1793215550956696",
+      "md5Hash": "VJeFcRsRNqL+jJHAPxzOjQ==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/_SUCCESS.json": {
+      "crc32c": "r2gQBA==",
+      "generation": "1793215590117908",
+      "md5Hash": "iRD5iqp9p14TdGbj6PQB3w==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "iM1e/Q==",
+      "generation": "1793215587212913",
+      "md5Hash": "vyLYibIeD2w+iIYrZnr6Qg==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "5aeWog==",
+      "generation": "1793215584293008",
+      "md5Hash": "kOHCFHqcL95FXx5X251AjA==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/ld_pruned_out.txt": {
+      "crc32c": "ifqUig==",
+      "generation": "1793215578396587",
+      "md5Hash": "2cVx0X1Njx/a6jugy2G95w==",
+      "size": "75860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/qc_removed.txt": {
+      "crc32c": "Mn52Rw==",
+      "generation": "1793215575342055",
+      "md5Hash": "qfmDEDOBWn3pzhsNCIrEsw==",
+      "size": "159156"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/selected_markers.txt": {
+      "crc32c": "k2E4Cg==",
+      "generation": "1793215572422493",
+      "md5Hash": "iPMzzxslfCZMWlAQ4+zUsw==",
+      "size": "314094"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr5/summary.json": {
+      "crc32c": "XnZrXg==",
+      "generation": "1793215581437022",
+      "md5Hash": "jFwSTGANbZlTcyq0br3a3A==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/_SUCCESS.json": {
+      "crc32c": "oMBAhQ==",
+      "generation": "1793215620415302",
+      "md5Hash": "U+CWDLMfWa0W3GbXNFD+zw==",
+      "size": "2163"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "37mAYQ==",
+      "generation": "1793215617450336",
+      "md5Hash": "rAGs7OD4aLyqFavAkJo8ng==",
+      "size": "861"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "yCeKag==",
+      "generation": "1793215614552875",
+      "md5Hash": "38ZfBJiKwF4gexPIFSZ9Jg==",
+      "size": "1229"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/ld_pruned_out.txt": {
+      "crc32c": "5Ut4lQ==",
+      "generation": "1793215608612907",
+      "md5Hash": "GDH1ZjfWwIuHxaB0fufjAA==",
+      "size": "173043"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/qc_removed.txt": {
+      "crc32c": "91zgeA==",
+      "generation": "1793215605666242",
+      "md5Hash": "C4u28OB3mq23koFLnVYgtg==",
+      "size": "156322"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/selected_markers.txt": {
+      "crc32c": "Dl4utA==",
+      "generation": "1793215602730024",
+      "md5Hash": "isIzVbRIn8FDKXwuy8sLUQ==",
+      "size": "322396"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr6/summary.json": {
+      "crc32c": "kCCmSQ==",
+      "generation": "1793215611591503",
+      "md5Hash": "LQ91uxboXXE7NYaYkNJWww==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/_SUCCESS.json": {
+      "crc32c": "YC0y1g==",
+      "generation": "1793215650914792",
+      "md5Hash": "8qiujLhd2992Zvs1yjTn3g==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "OnK+bA==",
+      "generation": "1793215648019797",
+      "md5Hash": "Jf7x0wjOKLw7CN2XCdId9g==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "iGz4Mw==",
+      "generation": "1793215645117419",
+      "md5Hash": "AyuSTMpCHUNI1IWFC44H0A==",
+      "size": "1228"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/ld_pruned_out.txt": {
+      "crc32c": "PbtglQ==",
+      "generation": "1793215639233241",
+      "md5Hash": "RT2HfNQYFPqMvaBR3AIeJA==",
+      "size": "75144"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/qc_removed.txt": {
+      "crc32c": "JcG8+g==",
+      "generation": "1793215636109745",
+      "md5Hash": "WXr7CEivr+prWNpCAydnJQ==",
+      "size": "139367"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/selected_markers.txt": {
+      "crc32c": "Sk++XQ==",
+      "generation": "1793215633081937",
+      "md5Hash": "WMWGIAKyk5Q8ysLhSSt4YA==",
+      "size": "290756"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr7/summary.json": {
+      "crc32c": "9iL+6g==",
+      "generation": "1793215642150111",
+      "md5Hash": "8Y4gIr5u3XM7Njj9kyMbKw==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/_SUCCESS.json": {
+      "crc32c": "k6EM/A==",
+      "generation": "1793215681368721",
+      "md5Hash": "eNid3zpopn5OuY9M0YzMiw==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "ldrIWg==",
+      "generation": "1793215678466820",
+      "md5Hash": "FlmH7syYHT7KiwTFRxTteA==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "Ja0bnQ==",
+      "generation": "1793215675563029",
+      "md5Hash": "iEAF1mpvH/M2wsXxA0/KrA==",
+      "size": "1228"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/ld_pruned_out.txt": {
+      "crc32c": "mAel9Q==",
+      "generation": "1793215669643248",
+      "md5Hash": "9EOtFUSLWGMw7kvJqp9Rzg==",
+      "size": "67287"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/qc_removed.txt": {
+      "crc32c": "B8/EGw==",
+      "generation": "1793215666435768",
+      "md5Hash": "E+MT9LdGbr0RTx1XJmFejA==",
+      "size": "136103"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/selected_markers.txt": {
+      "crc32c": "3uQfgw==",
+      "generation": "1793215663405604",
+      "md5Hash": "Pf/iyhp5/rQKYLo0/B31kg==",
+      "size": "265683"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr8/summary.json": {
+      "crc32c": "5WOVGg==",
+      "generation": "1793215672557090",
+      "md5Hash": "ShpJhVKNPauFnyHIywLcHw==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/_SUCCESS.json": {
+      "crc32c": "ZL6UnA==",
+      "generation": "1793215711463778",
+      "md5Hash": "3/xxBg27ItYe69cIzUj1Dg==",
+      "size": "2162"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/attempts/my23-v5-ancestry-model-flh92-0/ld.log": {
+      "crc32c": "iB5V9w==",
+      "generation": "1793215708526319",
+      "md5Hash": "KKpr9oY75npBJck0X5pUcQ==",
+      "size": "860"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/attempts/my23-v5-ancestry-model-flh92-0/qc.log": {
+      "crc32c": "5VQiPw==",
+      "generation": "1793215705586148",
+      "md5Hash": "MwajJ+djSeAKLb1XNDvNfg==",
+      "size": "1228"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/ld_pruned_out.txt": {
+      "crc32c": "Kzsi2Q==",
+      "generation": "1793215699791874",
+      "md5Hash": "IjD6cYRUBrwkJgyIou1jGg==",
+      "size": "54200"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/qc_removed.txt": {
+      "crc32c": "JBDByg==",
+      "generation": "1793215696837980",
+      "md5Hash": "ASihuGBLMOfBclx5DUikvw==",
+      "size": "101603"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/selected_markers.txt": {
+      "crc32c": "QkTNPg==",
+      "generation": "1793215693935761",
+      "md5Hash": "qBFG1VUfgeBFRo3zgK1A9Q==",
+      "size": "231032"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/chromosomes/chr9/summary.json": {
+      "crc32c": "93SJ2Q==",
+      "generation": "1793215702689000",
+      "md5Hash": "HZNI01nrS0d8oFWdHosX7Q==",
+      "size": "243"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/4_snp_qc_and_ld_prune/results/my23-20261028-154934/marker_summary.json": {
+      "crc32c": "A/NhcQ==",
+      "generation": "1793216107320473",
+      "md5Hash": "Ew7KmMtDckqgDZkAvf+XsQ==",
+      "size": "6461"
+    }
+  },
+  "run_id": "my23-20261028-154934",
+  "step": 4
+}

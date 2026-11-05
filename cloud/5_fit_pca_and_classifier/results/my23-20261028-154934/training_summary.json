@@ -1,0 +1,28 @@
+{
+  "best_parameters": {
+    "logistic_C": 1.0,
+    "pca_components": 10
+  },
+  "classes": [
+    "AFR",
+    "AMR",
+    "EAS",
+    "EUR",
+    "SAS"
+  ],
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "cv_accuracy": 0.9970029731223761,
+  "cv_balanced_accuracy": 0.9961756548157168,
+  "cv_groups_sha256": "01855ec0df67e0de68289e89af57e35aff725d357b745cced0dc0889ffce531c",
+  "cv_limitation": "SNP QC/LD pruning used the entire training cohort before CV; validation genotypes influenced that unsupervised marker selection. The 501 test samples were not used for selection or fitting.",
+  "cv_method": "3-fold StratifiedGroupKFold; relatives grouped; imputer/scaler/PCA refitted per fold",
+  "missing_genotypes": 0,
+  "run_id": "my23-20261028-154934",
+  "selected_markers": 335663,
+  "sklearn_version": "1.7.2",
+  "status": "trained",
+  "test_people_used": 0,
+  "total_training_genotypes": 672332989,
+  "training_ids_sha256": "f6368f31c239e4f00c303825de1eb09337a31035f078ce45acbd984289d33df9",
+  "training_people": 2003
+}

@@ -1,0 +1,498 @@
+{
+  "baseline_split": {
+    "test": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/test501.keep",
+    "train": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/train2003.keep"
+  },
+  "expected_genotype_files": 1018,
+  "expected_participants": 885,
+  "expected_sha256": {
+    "kinship": "7ed156e82bab448cace2908bd5cffcdaca9bec48c32df4602cc5675520375010",
+    "manifest": "53466424c9caa5c48d6d3844edb6a780e0a001eac5588af8f516be19e7679663"
+  },
+  "expected_v5_files": 74,
+  "maximum_incompatible_fraction": 0.01,
+  "minimum_called_fraction": 0.9,
+  "onnx_probability_atol": 0.0001,
+  "output_root": "gs://all23_0710/ancestry/my23_v5_ancestry_model",
+  "plink_memory_mb": 4096,
+  "qc": {
+    "ld_r2": 0.5,
+    "ld_window": "200kb",
+    "max_missing_fraction": 0.02,
+    "min_maf": 0.01
+  },
+  "reference_objects": {
+    "gs://ref1000g/phase3/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "t/2tTg==",
+      "generation": "1792603070592182",
+      "md5Hash": "dvHT/vJ8bD9FHN/FFSUKDg==",
+      "size": "1165011543"
+    },
+    "gs://ref1000g/phase3/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "3NpwOw==",
+      "generation": "1792603076272832",
+      "md5Hash": "jECFGk6dPGyaCUYZYcbkxA==",
+      "size": "224369"
+    },
+    "gs://ref1000g/phase3/ALL.chr10.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "V6e09Q==",
+      "generation": "1792626791243163",
+      "md5Hash": "RYFLBuZR+PtAk2SqbWUlfg==",
+      "size": "741683063"
+    },
+    "gs://ref1000g/phase3/ALL.chr10.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "Jy3Z6A==",
+      "generation": "1792626796404499",
+      "md5Hash": "JmpyADMrlxx0GxUg4DvagA==",
+      "size": "132932"
+    },
+    "gs://ref1000g/phase3/ALL.chr11.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "qJwN4w==",
+      "generation": "1792628330458972",
+      "md5Hash": "JJRKxh5ghEUKcGeGMWXUnA==",
+      "size": "734583405"
+    },
+    "gs://ref1000g/phase3/ALL.chr11.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "bS8XIQ==",
+      "generation": "1792628335252972",
+      "md5Hash": "HhyOoqI616s5llSSJSUYHQ==",
+      "size": "133030"
+    },
+    "gs://ref1000g/phase3/ALL.chr12.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "CF6tgg==",
+      "generation": "1792631129585119",
+      "md5Hash": "hqVXyz/Yzp63FGoCCOFoaA==",
+      "size": "710187972"
+    },
+    "gs://ref1000g/phase3/ALL.chr12.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "ktANzw==",
+      "generation": "1792631136451418",
+      "md5Hash": "/6NE5hkxC8GMkb64PYA72A==",
+      "size": "133191"
+    },
+    "gs://ref1000g/phase3/ALL.chr13.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "cms7/g==",
+      "generation": "1792631812503227",
+      "md5Hash": "DnURm/3O48oYLwMAFvWOew==",
+      "size": "533918831"
+    },
+    "gs://ref1000g/phase3/ALL.chr13.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "5gNKIg==",
+      "generation": "1792631817044458",
+      "md5Hash": "NcKWsol7wAY77zoxTICVIA==",
+      "size": "96853"
+    },
+    "gs://ref1000g/phase3/ALL.chr14.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "3zWh/A==",
+      "generation": "1792633296705126",
+      "md5Hash": "nhDFtnNTZezcCfgIynix7Q==",
+      "size": "485261255"
+    },
+    "gs://ref1000g/phase3/ALL.chr14.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "E5IioA==",
+      "generation": "1792633301454213",
+      "md5Hash": "jq9dCjjC4su7J+kKAo34Zw==",
+      "size": "88294"
+    },
+    "gs://ref1000g/phase3/ALL.chr15.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "8cWsfA==",
+      "generation": "1792633893186724",
+      "md5Hash": "Jxc/7p7e0gCFRM97BHd5sA==",
+      "size": "438397058"
+    },
+    "gs://ref1000g/phase3/ALL.chr15.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "ACRUyw==",
+      "generation": "1792633898890340",
+      "md5Hash": "R38Y0KmlQopXg+tebhBVIg==",
+      "size": "81405"
+    },
+    "gs://ref1000g/phase3/ALL.chr16.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "M8PFOA==",
+      "generation": "1792634658542527",
+      "md5Hash": "nhAprUJEBJiLeS1z+weezA==",
+      "size": "473472094"
+    },
+    "gs://ref1000g/phase3/ALL.chr16.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "+Ho7EQ==",
+      "generation": "1792634663670902",
+      "md5Hash": "Rri8ZrVQJohUW9WUkKOTrw==",
+      "size": "81019"
+    },
+    "gs://ref1000g/phase3/ALL.chr17.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "XAmcXA==",
+      "generation": "1792635486855702",
+      "md5Hash": "JC6fWhE40PjT6qQhBpn4GQ==",
+      "size": "415901551"
+    },
+    "gs://ref1000g/phase3/ALL.chr17.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "/M1fbA==",
+      "generation": "1792635491364588",
+      "md5Hash": "qYGtoBEBfRInfwrlPvD+ig==",
+      "size": "79034"
+    },
+    "gs://ref1000g/phase3/ALL.chr18.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "+8CmSg==",
+      "generation": "1792636181817165",
+      "md5Hash": "E/zbuJW5jJzmZtWHOt6jGw==",
+      "size": "418186091"
+    },
+    "gs://ref1000g/phase3/ALL.chr18.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "lYgtlA==",
+      "generation": "1792636185988013",
+      "md5Hash": "p2eyTKSA7TLcMgLHgpWKDg==",
+      "size": "74459"
+    },
+    "gs://ref1000g/phase3/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "CwWy3A==",
+      "generation": "1792636847474536",
+      "md5Hash": "WfVJY5EcZU1djSq/pO09oA==",
+      "size": "344793450"
+    },
+    "gs://ref1000g/phase3/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "mAOnBg==",
+      "generation": "1792636851742599",
+      "md5Hash": "zABmBnmaBMSr5dYqD9THnA==",
+      "size": "55546"
+    },
+    "gs://ref1000g/phase3/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "h3QNnQ==",
+      "generation": "1792608110086914",
+      "md5Hash": "T8PdS7wP19BH4aOMyuUdwA==",
+      "size": "1255861869"
+    },
+    "gs://ref1000g/phase3/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "pdUuYQ==",
+      "generation": "1792608124158143",
+      "md5Hash": "3w9wEVgx0miRW26kIqVZ1Q==",
+      "size": "237394"
+    },
+    "gs://ref1000g/phase3/ALL.chr20.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "FsRTjA==",
+      "generation": "1792637777517693",
+      "md5Hash": "tTvNY+iki4x5SrP7snAD/A==",
+      "size": "327135853"
+    },
+    "gs://ref1000g/phase3/ALL.chr20.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "qqte2w==",
+      "generation": "1792637782445129",
+      "md5Hash": "kdPtuXAx0ktKgSfvnogzcQ==",
+      "size": "56472"
+    },
+    "gs://ref1000g/phase3/ALL.chr21.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "5p4B4Q==",
+      "generation": "1792639129331409",
+      "md5Hash": "k3QQ0dBLYyYeX2ZtgfA5BQ==",
+      "size": "209774472"
+    },
+    "gs://ref1000g/phase3/ALL.chr21.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "ehGqgg==",
+      "generation": "1792639134020520",
+      "md5Hash": "+Dh7wfqKyce6CX3TKiDCog==",
+      "size": "35609"
+    },
+    "gs://ref1000g/phase3/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "VZwFeg==",
+      "generation": "1792189901386060",
+      "md5Hash": "r984OjL875OcqKRovvI3WQ==",
+      "size": "205612353"
+    },
+    "gs://ref1000g/phase3/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "f5yb2Q==",
+      "generation": "1792639140168896",
+      "md5Hash": "zDBQk0qlCi8DvzwlwSFS7A==",
+      "size": "36251"
+    },
+    "gs://ref1000g/phase3/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "t0N0Kw==",
+      "generation": "1792610313911557",
+      "md5Hash": "8ntH10NPX1iw5Ql98wrNpA==",
+      "size": "1058895733"
+    },
+    "gs://ref1000g/phase3/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "+hhTJw==",
+      "generation": "1792610327460074",
+      "md5Hash": "NTvoAHl7NUNPsWHGnyKOYQ==",
+      "size": "195656"
+    },
+    "gs://ref1000g/phase3/ALL.chr4.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "D1TVTw==",
+      "generation": "1792611927346777",
+      "md5Hash": "Hef/saoBZWt1Wdc6SCrLgg==",
+      "size": "1071020149"
+    },
+    "gs://ref1000g/phase3/ALL.chr4.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "dcmK6Q==",
+      "generation": "1792611954044125",
+      "md5Hash": "37uzLnTDcVu979DZRwgZ+g==",
+      "size": "189335"
+    },
+    "gs://ref1000g/phase3/ALL.chr5.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "D10QHg==",
+      "generation": "1792613851018725",
+      "md5Hash": "dq9PWzIEE50pEVsXAZEEMQ==",
+      "size": "946995712"
+    },
+    "gs://ref1000g/phase3/ALL.chr5.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "ZUhD5w==",
+      "generation": "1792613863545114",
+      "md5Hash": "rlLnE3Yzz6DAy5stCLBqeQ==",
+      "size": "176359"
+    },
+    "gs://ref1000g/phase3/ALL.chr6.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "uQKlBg==",
+      "generation": "1792615255975121",
+      "md5Hash": "0H6nqaWltwrtYtEPkX4fZA==",
+      "size": "959144250"
+    },
+    "gs://ref1000g/phase3/ALL.chr6.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "nIgrnQ==",
+      "generation": "1792615269921399",
+      "md5Hash": "DhHovvi1s77crzLvDWoBfQ==",
+      "size": "169551"
+    },
+    "gs://ref1000g/phase3/ALL.chr7.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "1hrl4w==",
+      "generation": "1792617272309291",
+      "md5Hash": "O4EQT1XdJKKzbDuR24jybg==",
+      "size": "870098463"
+    },
+    "gs://ref1000g/phase3/ALL.chr7.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "+Iq6TQ==",
+      "generation": "1792617286070319",
+      "md5Hash": "6o1EWjsYM2raSnq8+fRCUw==",
+      "size": "157153"
+    },
+    "gs://ref1000g/phase3/ALL.chr8.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "mJs7Tw==",
+      "generation": "1792619658864644",
+      "md5Hash": "JGA6CIJIggK4wxdS/+lHOQ==",
+      "size": "824304010"
+    },
+    "gs://ref1000g/phase3/ALL.chr8.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "iJbmqg==",
+      "generation": "1792619663526590",
+      "md5Hash": "v9nTuXigAMBNyRlnh16Lhg==",
+      "size": "145581"
+    },
+    "gs://ref1000g/phase3/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz": {
+      "crc32c": "N2KV5w==",
+      "generation": "1792622339193997",
+      "md5Hash": "wvE1CbsAzlTlEt7YukVveg==",
+      "size": "644258549"
+    },
+    "gs://ref1000g/phase3/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz.tbi": {
+      "crc32c": "fNBUIg==",
+      "generation": "1792622343905169",
+      "md5Hash": "+nKzBnsFYw0Ng7zvi0ScYw==",
+      "size": "120890"
+    }
+  },
+  "reference_root": "gs://ref1000g/phase3",
+  "run_id": "my23-20261028-154934",
+  "schema_version": 1,
+  "selected_personal_files": [
+    "geneticFiles/hu00698E_3101_genome_Elizabeth_Morgan_v5_Full_20170921114132.txt",
+    "geneticFiles/hu09B28E_4181_genome_Joshua_Yoakem_v5_Full_20250129211749.txt",
+    "geneticFiles/hu0B4CF6_3397_genome_Angela_Prochazka_v5_Full_20180216181631.txt",
+    "geneticFiles/hu0F2E0D_4141_genome_Cajun_v5_Full_20231121192441.txt",
+    "geneticFiles/hu115586_3554_genome_Vinh_Dang_v5_Full_20180623223048.txt",
+    "geneticFiles/hu1A57E4_3903_genome_BEA_v5_Full_20190713133017.txt",
+    "geneticFiles/hu1B42D7_3610_genome_Geran_Smith_v5_Full_20181120095948.txt",
+    "geneticFiles/hu1C1368_3816_genome_Robert_deCanhaKnight_v5_Full_20190807055206.txt",
+    "geneticFiles/hu2346D6_3846_genome_Kathryn_Hollis_v5_Full_20190924050218.txt",
+    "geneticFiles/hu2457FA_4119_genome_Hannah_Goodman_v5_Full_20230823144607.txt",
+    "geneticFiles/hu278AF5_3973_20210124151934.txt",
+    "geneticFiles/hu28CF73_3927_genome_Jeffrey_Hsu_v5_Full_20200526175734.txt",
+    "geneticFiles/hu2D8E6A_3539_genome_Cristelle_Chirwa_v5_Full_20180208094401.txt",
+    "geneticFiles/hu31FB36_3520_genome_Honor_Monaghan_v5_Full_20180509183949.txt",
+    "geneticFiles/hu34603C_3671_genome_Jeffrey_Bloom_v5_Full_20190110052330.txt",
+    "geneticFiles/hu35E970_3584_genome_Katie_Valker_v5_Full_20180324132741.txt",
+    "geneticFiles/hu39A63C_3243_genome_v5_Full_20180116123109.txt",
+    "geneticFiles/hu416394_4187_23andme_genome_kat_suricata_v5_full_20171221130201.txt",
+    "geneticFiles/hu426888_3626_genome_Aaron_Gertler_v5_Full_20181130201257.txt",
+    "geneticFiles/hu476C60_4139_genome_Kristen_Martin_v5_Full_20200910180029_-_Copy.txt",
+    "geneticFiles/hu4F45FB_3197_genome_AnnaNicole_Lee_v5_Full_20171205061151.txt",
+    "geneticFiles/hu50801B_4162_genome_Melinda_Chaperlo_v5_Full_20240730223601.txt",
+    "geneticFiles/hu50B3F5_3465_genome_Lisa_Fauman_v5_Full_20180326062517.txt",
+    "geneticFiles/hu564CDE_3656_genome_Noah_Deeds_v5_Full_20190115092202.txt",
+    "geneticFiles/hu5E8AF5_3466_genome_Isaac_Winters_v5_Full_20180326104258.txt",
+    "geneticFiles/hu5EC009_3632_genome_v5_Full_20181217061845.txt",
+    "geneticFiles/hu5FC95A_3858_genome_Lisa_Feinsilber_v5_Full_20191025134132.txt",
+    "geneticFiles/hu60EF43_3476_genome_Michelle_Grogan_v5_Full_20180406084128.txt",
+    "geneticFiles/hu630EAE_3897_genome_Taylor_Giddens_v5_Full_20200323193516.txt",
+    "geneticFiles/hu6DB840_3934_genome_v5_Full_20200711220308.txt",
+    "geneticFiles/hu706427_3432_genome_Oliver_Moadel_v5_Full_20180130222634.txt",
+    "geneticFiles/hu753D7A_3573_genome_Graham_Bessellieu_v5_Full_20180504074902.txt",
+    "geneticFiles/hu785DB2_3763_20190606184050.txt",
+    "geneticFiles/hu794D40_3566_genome.txt",
+    "geneticFiles/hu7A03F2_3246_genome_Beth_Peddie_v5_Full_20180117193319.txt",
+    "geneticFiles/hu7ECB9C_4170_Timothy_Jones_v5_Full_20230525184457.txt",
+    "geneticFiles/hu814F25_3527_genome_hu814F25_v5_Full_2018.txt",
+    "geneticFiles/hu8209C4_3916_genome_v5_Full_20180602051728.txt",
+    "geneticFiles/hu8550FF_3905_genome_Alice_Allen_v5_Full_20190219090723.txt",
+    "geneticFiles/hu85F3ED_3253_genome_Kurt_Greis_v5_Full_20180115075521.txt",
+    "geneticFiles/hu876E3D_4117_genome_Dan_Elton_v5_Full_20221117115029.txt",
+    "geneticFiles/hu88370B_3398_Genetic_Data.txt",
+    "geneticFiles/hu88D4F9_2951_genome_v5_Full_20170826191000.txt",
+    "geneticFiles/hu97688D_3473_genome_Corey_Bowers_v5_Full_20180309055201.txt",
+    "geneticFiles/huA002A6_3515_genome_S_v5_Full_20180219091250.txt",
+    "geneticFiles/huA08F4D_4215_genome_Lorena_Sandoval_v5_Full_20260429131650.txt",
+    "geneticFiles/huA08F4D_4218_genome_Lorena_Sandoval_v5_Full_20260429131650.txt",
+    "geneticFiles/huA2D79E_3066_genome_LW_v5_Full_20170924182428.txt",
+    "geneticFiles/huA56CA0_3067_23andMe_genome_v5_JP.txt",
+    "geneticFiles/huAAF706_3472_genome_v5_Full_20180402093549.txt",
+    "geneticFiles/huAD4723_3132_genome_v5_Full.txt",
+    "geneticFiles/huAFE8F3_3506_genome_v5_Full_20180503085040.txt",
+    "geneticFiles/huBC964C_3870_genome_Alan_Hetzel_v5_Full_20191116072511.txt",
+    "geneticFiles/huBE0518_4142_genome_Christopher_Smith_v5_Full_20230926164611.txt",
+    "geneticFiles/huBEB14E_3705_genome_dennis_gallo_v5_Full_20190327181104.txt",
+    "geneticFiles/huC03167_3182_genome_Dylan_Taylor_v5_Full_20171123001840.txt",
+    "geneticFiles/huC41B6C_3139_genome_Rachel_Noone_v5_Full_20171019105853.txt",
+    "geneticFiles/huC7BB3B_3430_genome_Rachel_Tharp_v5_Full_20180312120159.txt",
+    "geneticFiles/huC8B936_4208_genome_James_Jones_v5_Full_20230726173828.txt",
+    "geneticFiles/huCB7D85_3252_genome_Amy_Iacono_v5_Full_20170910061139.txt",
+    "geneticFiles/huD2AD97_3395_genome_Jodi_Riggins_v5_Full_20180217093249.txt",
+    "geneticFiles/huD8A898_3926_genome_huD8A898_v5_Full_20200524092017.txt",
+    "geneticFiles/huE30B6E_3921_genome_KathleenAlice_Grasso_v5_Full_20200422160930.txt",
+    "geneticFiles/huE4457F_3534_genomeFull_20180515083347.txt",
+    "geneticFiles/huE50E31_3814_20190809035031.txt",
+    "geneticFiles/huE63257_3918_genome_ARM_v5_Full_20191017170903.txt",
+    "geneticFiles/huE7F048_3209_DB_23andme_renamedfile_2017.txt",
+    "geneticFiles/huEBFE01_3544_genome_Denise_Smith_v5_Full_20180523151556.txt",
+    "geneticFiles/huF31554_4075_genome_Katrina_Gardner_v5_Full_20220813004258.txt",
+    "geneticFiles/huF6E783_3133_genome_RitaAnn_Valencia_v5_Full_20171005135837.txt",
+    "geneticFiles/huF6E783_3135_genome_RitaAnn_Valencia_v5_Full_20171011005432.txt",
+    "geneticFiles/huF7A4DE_3248_genome_Jessica_Murray_v5_Full_20180114204345.txt",
+    "geneticFiles/huF80F84_3528_genome_Kate_Sheridan_v5_Full_20180523150056.txt",
+    "geneticFiles/huFB745D_4092_genome_Timothy_Rowe_v5_Full_20221227074804.txt"
+  ],
+  "source_sha256": "1fc17f0916282deb187b5f12bdcd40fea80ab46fcf924db10c5a92cfcc8014f5",
+  "sources": {
+    "chip_report": "gs://all23_0710/chip_manifests/chip_match_results/chip_match_results.json",
+    "kinship": "gs://ref1000g/ancestry/relatives/input/deg2_phase3.kin0",
+    "manifest": "gs://ref1000g/ancestry/1_prepared_data/input/v5_manifest.json",
+    "panel": "gs://ref1000g/phase3/integrated_call_samples_v3.20130502.ALL.panel",
+    "participants": "gs://all23_0710/updatedParticipantsList/NEW_participants_1020_consolidated_with_build_and_profile_07102026_2053.json",
+    "raw_root": "gs://all23_0710",
+    "test": "gs://ref1000g/ancestry/1_prepared_data/input/test501.txt",
+    "train": "gs://ref1000g/ancestry/1_prepared_data/input/train2003.txt"
+  },
+  "split_validation": {
+    "test": {
+      "baseline_file_sha256": "a631ce82f88af0a0d48f5e0c5aa18b773c97ee992c0b0473f5bf3e25a948862c",
+      "baseline_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/test501.keep",
+      "input_file_sha256": "419c2880e3e1a4e727f8e6881743c8260d09060b637cd5dfe7f650fa6d16d47a",
+      "membership_matches": true,
+      "people": 501,
+      "same_order": true,
+      "sorted_ids_sha256": "f74ae3583db1f4f474f453b399ea1744968505d5c271a8a1fac2685e2e7a961b"
+    },
+    "total_people": 2504,
+    "train": {
+      "baseline_file_sha256": "f6368f31c239e4f00c303825de1eb09337a31035f078ce45acbd984289d33df9",
+      "baseline_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/train2003.keep",
+      "input_file_sha256": "0057dd84cc46018c8338192cdcb253360c81fba343600b27b6ddfa2642527b50",
+      "membership_matches": true,
+      "people": 2003,
+      "same_order": true,
+      "sorted_ids_sha256": "1229a2cc7c79cbcab2886e59d54b682ddbbefd14e86a093cf22d6a5ad142315e"
+    },
+    "train_test_overlap": 0
+  },
+  "staged_inputs": {
+    "baseline_test": {
+      "metadata": {
+        "crc32c": "/6ya8A==",
+        "generation": "1793202650240565",
+        "md5Hash": "gHNCNQpormbRy4rrEx0GCw==",
+        "size": "4013"
+      },
+      "original_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/test501.keep",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/input/my23-20261028-154934/baseline_test501.keep"
+    },
+    "baseline_train": {
+      "metadata": {
+        "crc32c": "Fevyjw==",
+        "generation": "1793202636605442",
+        "md5Hash": "o+IZZdhvAdBNosPF7OZaCg==",
+        "size": "16029"
+      },
+      "original_uri": "gs://ref1000g/ancestry/3_audit_pop_and_relatives/results/20261026-164720-2308/train2003.keep",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/input/my23-20261028-154934/baseline_train2003.keep"
+    },
+    "chip_report": {
+      "metadata": {
+        "crc32c": "+UXYGg==",
+        "generation": "1793202626742579",
+        "md5Hash": "i3sQaXbjE0BeLZSp/KHWNg==",
+        "size": "848002"
+      },
+      "original_uri": "gs://all23_0710/chip_manifests/chip_match_results/chip_match_results.json",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/my23-20261028-154934/chip_match_results.json"
+    },
+    "kinship": {
+      "metadata": {
+        "crc32c": "cD7NiQ==",
+        "generation": "1793202616785632",
+        "md5Hash": "FhGD1sC9icsWqIXQuSn1qQ==",
+        "size": "865"
+      },
+      "original_uri": "gs://ref1000g/ancestry/relatives/input/deg2_phase3.kin0",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/input/my23-20261028-154934/deg2_phase3.kin0"
+    },
+    "manifest": {
+      "metadata": {
+        "crc32c": "gKvgWw==",
+        "generation": "1793202591537161",
+        "md5Hash": "fIL7BKBQRbfenXC3Rme2lQ==",
+        "size": "225264404"
+      },
+      "original_uri": "gs://ref1000g/ancestry/1_prepared_data/input/v5_manifest.json",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/1_prepared_data/input/my23-20261028-154934/v5_manifest.json"
+    },
+    "panel": {
+      "metadata": {
+        "crc32c": "xe9wQA==",
+        "generation": "1793202610462789",
+        "md5Hash": "fuVnVVMIgjBTCn/ojCLyAQ==",
+        "size": "55156"
+      },
+      "original_uri": "gs://ref1000g/phase3/integrated_call_samples_v3.20130502.ALL.panel",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/3_audit_pop_and_relatives/input/my23-20261028-154934/population.panel"
+    },
+    "participants": {
+      "metadata": {
+        "crc32c": "ZmhV1Q==",
+        "generation": "1793202665435364",
+        "md5Hash": "M3Ojk4w7pcl6DTBIvdffPQ==",
+        "size": "10950904"
+      },
+      "original_uri": "gs://all23_0710/updatedParticipantsList/NEW_participants_1020_consolidated_with_build_and_profile_07102026_2053.json",
+      "sha256": "c38e8362a7fd8375b1c642e888a6eefc890416bba4e5ced48cc0b2b71596e16e",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/7_apply_v5_classifier/input/my23-20261028-154934/participants.json"
+    },
+    "test": {
+      "metadata": {
+        "crc32c": "sYHHAw==",
+        "generation": "1793202604385067",
+        "md5Hash": "F9Kq1BvrCCmoo6p1jDbE3Q==",
+        "size": "4008"
+      },
+      "original_uri": "gs://ref1000g/ancestry/1_prepared_data/input/test501.txt",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/input/my23-20261028-154934/test501.txt"
+    },
+    "train": {
+      "metadata": {
+        "crc32c": "8bkY+Q==",
+        "generation": "1793202597890054",
+        "md5Hash": "Vm/w4+juqqlkJAJGntJTYQ==",
+        "size": "16024"
+      },
+      "original_uri": "gs://ref1000g/ancestry/1_prepared_data/input/train2003.txt",
+      "uri": "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/input/my23-20261028-154934/train2003.txt"
+    }
+  },
+  "test_samples": 501,
+  "threads": 4,
+  "train_samples": 2003
+}

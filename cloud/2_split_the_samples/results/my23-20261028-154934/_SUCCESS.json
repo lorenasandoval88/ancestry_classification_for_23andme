@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "config_sha256": "6bb207f2b378ba8fd56285b56c1e1df4e77d11aa0eff1fe7ee15295b57d6ca6c",
+  "objects": {
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/results/my23-20261028-154934/split_summary.json": {
+      "crc32c": "pqMwzA==",
+      "generation": "1793215394281835",
+      "md5Hash": "q7R/UJDuT0J2D9nQM79Hpg==",
+      "size": "316"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/results/my23-20261028-154934/test501.keep": {
+      "crc32c": "/6ya8A==",
+      "generation": "1793215391396742",
+      "md5Hash": "gHNCNQpormbRy4rrEx0GCw==",
+      "size": "4013"
+    },
+    "gs://all23_0710/ancestry/my23_v5_ancestry_model/2_split_the_samples/results/my23-20261028-154934/train2003.keep": {
+      "crc32c": "Fevyjw==",
+      "generation": "1793215388452397",
+      "md5Hash": "o+IZZdhvAdBNosPF7OZaCg==",
+      "size": "16029"
+    }
+  },
+  "run_id": "my23-20261028-154934",
+  "step": 2
+}

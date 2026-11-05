@@ -1,0 +1,6 @@
+broad_group	train2003	test501	test_fewer_than_5
+AFR	524	137	False
+AMR	272	75	False
+EAS	400	104	False
+EUR	408	95	False
+SAS	399	90	False
