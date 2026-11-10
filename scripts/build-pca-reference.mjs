@@ -24,6 +24,12 @@
 // Known labels and populations come from data/reference_cohort.json; every ID in the PC tables
 // must be in the cohort, and counts must match (2,003 / 501).
 //
+// Assignment weights: with model/model.onnx present, every reference person also gets
+// predicted + probabilities = softmax(PC · classifier_weights + classifier_bias). The formula is
+// first checked against the Step 6 predictions of the 501 test people (same group for all, max
+// |Δp| ≤ 1e-3), then applied to the training people (in-sample) and any v5 table without a
+// predicted column. Test people keep Step 6's recorded values.
+//
 // Cloud-side export (same fitted PCA for both splits — do not refit on the 501):
 //
 //   import joblib, json, pandas as pd
@@ -41,11 +47,13 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import * as onnxProto from "onnx-proto";
 import { parseArgs, resolveRun } from "./lib/run-dir.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const cohortPath = resolve(root, "data/reference_cohort.json");
 const metadataPath = resolve(root, "model/metadata.json");
+const modelPath = resolve(root, "model/model.onnx");
 
 // Repo-relative path for messages/provenance; bare file name for files outside the repo.
 const rel = (p) => { const r = relative(root, p); return r.startsWith("..") ? basename(p) : r.replace(/\\/g, "/"); };
@@ -97,28 +105,59 @@ function pcColumns(header, path) {
   return cols;
 }
 
-/** Read a PC table into { ids, scores, predicted?, known? } with scores rounded to 4 dp. */
+/** Read a PC table into { ids, scores, exact, predicted?, known? }; scores rounded to 4 dp, exact as written. */
 function readScores(path) {
   const { header, rows } = readTsv(path);
   const idCol = pickIdColumn(header, path);
   const cols = pcColumns(header, path);
   const predCol = header.find((h) => PRED_RE.test(h)) || null;
   const knownCol = header.find((h) => KNOWN_RE.test(h)) || null;
-  const ids = [], scores = [], predicted = [], known = [];
+  const ids = [], scores = [], exact = [], predicted = [], known = [];
   for (const r of rows) {
     const id = r[idCol];
     if (!id) throw new Error(`${rel(path)}: empty ID in column ${idCol}`);
-    const s = cols.map((c) => {
+    const full = cols.map((c) => {
       const v = Number(r[c]);
       if (!Number.isFinite(v)) throw new Error(`${rel(path)}: ${id} has non-numeric ${c} = ${JSON.stringify(r[c])}`);
-      return Math.round(v * 1e4) / 1e4;
+      return v;
     });
-    ids.push(id); scores.push(s);
+    ids.push(id); exact.push(full); scores.push(full.map((v) => Math.round(v * 1e4) / 1e4));
     if (predCol) predicted.push(normGroup(r[predCol], path, id));
     if (knownCol) known.push(normGroup(r[knownCol], path, id));
   }
   if (new Set(ids).size !== ids.length) throw new Error(`${rel(path)}: duplicate IDs`);
-  return { ids, scores, predicted: predCol ? predicted : null, known: knownCol ? known : null, k: cols.length, idCol, predCol, knownCol };
+  return { ids, scores, exact, predicted: predCol ? predicted : null, known: knownCol ? known : null, k: cols.length, idCol, predCol, knownCol };
+}
+
+/**
+ * Classifier parameters of the published ONNX model (the logistic-regression layer after PCA):
+ * weights[k][C] and bias[C] in the order of metadata.classes. null when the model is absent.
+ */
+function readClassifier(modelPath, classes) {
+  if (!existsSync(modelPath)) return null;
+  const onnx = onnxProto.onnx ?? onnxProto.default?.onnx ?? onnxProto.default ?? onnxProto;
+  const g = onnx.ModelProto.decode(readFileSync(modelPath)).graph;
+  const f32 = (name) => {
+    const t = g.initializer.find((t) => t.name === name);
+    if (!t) throw new Error(`${rel(modelPath)}: no initializer ${name}`);
+    return { data: new Float32Array(Uint8Array.from(t.rawData).buffer), dims: t.dims.map(Number) };
+  };
+  const w = f32("classifier_weights"), b = f32("classifier_bias");
+  if (w.dims.length !== 2 || w.dims[1] !== classes.length || b.dims[0] !== classes.length) {
+    throw new Error(`${rel(modelPath)}: classifier_weights ${w.dims.join("x")} / classifier_bias ${b.dims.join("x")} do not match ${classes.length} classes`);
+  }
+  const weights = Array.from({ length: w.dims[0] }, (_, i) => Array.from(w.data.subarray(i * classes.length, (i + 1) * classes.length)));
+  return { weights, bias: Array.from(b.data), k: w.dims[0] };
+}
+
+/** softmax(pc · W + b) → { group: probability } and the arg-max group. */
+function assign(pcs, clf, classes) {
+  const logits = clf.bias.map((b0, c) => b0 + pcs.reduce((s, v, i) => s + v * clf.weights[i][c], 0));
+  const mx = Math.max(...logits);
+  const ex = logits.map((l) => Math.exp(l - mx));
+  const z = ex.reduce((a, b) => a + b, 0);
+  const probs = Object.fromEntries(classes.map((g, c) => [g, Math.round((ex[c] / z) * 1e4) / 1e4]));
+  return { probs, predicted: classes[logits.indexOf(mx)] };
 }
 
 function normGroup(v, path, id) {
@@ -210,13 +249,13 @@ function splitCombined(path) {
   const splitCol = header.find((h) => /^(split|cohort|set|subset|role)$/i.test(h)) || null;
   const rowsRaw = readTsv(path).rows;
   const idCol = all.idCol;
-  const part = { train: { ids: [], scores: [], predicted: all.predicted ? [] : null, known: all.known ? [] : null, k: all.k, idCol, predCol: all.predCol, knownCol: all.knownCol },
-                 test: { ids: [], scores: [], predicted: all.predicted ? [] : null, known: all.known ? [] : null, k: all.k, idCol, predCol: all.predCol, knownCol: all.knownCol } };
+  const part = { train: { ids: [], scores: [], exact: [], predicted: all.predicted ? [] : null, known: all.known ? [] : null, k: all.k, idCol, predCol: all.predCol, knownCol: all.knownCol },
+                 test: { ids: [], scores: [], exact: [], predicted: all.predicted ? [] : null, known: all.known ? [] : null, k: all.k, idCol, predCol: all.predCol, knownCol: all.knownCol } };
   all.ids.forEach((id, i) => {
     let s = splitCol ? String(rowsRaw[i][splitCol]).toLowerCase() : byId.get(id)?.split;
     if (s && /^train/.test(s)) s = "train"; else if (s && /^(test|heldout|held-out)/.test(s)) s = "test";
     if (s !== "train" && s !== "test") throw new Error(`${rel(path)}: cannot assign ${id} to train/test${splitCol ? ` (split = ${JSON.stringify(rowsRaw[i][splitCol])})` : " — not in reference_cohort.json"}`);
-    part[s].ids.push(id); part[s].scores.push(all.scores[i]);
+    part[s].ids.push(id); part[s].scores.push(all.scores[i]); part[s].exact.push(all.exact[i]);
     if (all.predicted) part[s].predicted.push(all.predicted[i]);
     if (all.known) part[s].known.push(all.known[i]);
   });
@@ -265,11 +304,41 @@ if (predicted) {
   if (probs) groups.test.probabilities = probs;
 }
 
+// Group-assignment weights for every reference person from the published classifier
+// (softmax of the logistic layer applied to the PCs). The test people double as a check: the
+// formula must reproduce Step 6's recorded predictions, which were computed from genotypes.
+const meta = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, "utf8")) : {};
+const classes = meta.classes || GROUPS;
+const clf = readClassifier(modelPath, classes);
+let weightsCheck = null;
+if (clf) {
+  if (clf.k !== k) throw new Error(`${rel(modelPath)} classifier takes ${clf.k} PCs, tables have ${k}`);
+  const testAssigned = test.exact.map((pcs) => assign(pcs, clf, classes));
+  if (groups.test.predicted) {
+    const disagree = testAssigned.map((a, i) => (a.predicted !== groups.test.predicted[i] ? test.ids[i] : null)).filter(Boolean);
+    if (disagree.length) throw new Error(`softmax(PC · W + b) assigns a different group than Step 6 for ${disagree.length} test people (${disagree.slice(0, 5).join(", ")}) — PC tables and model.onnx are not from the same fit`);
+  }
+  let maxDiff = 0;
+  if (groups.test.probabilities) {
+    testAssigned.forEach((a, i) => { for (const g of classes) maxDiff = Math.max(maxDiff, Math.abs(a.probs[g] - (groups.test.probabilities[i][g] ?? 0))); });
+    if (maxDiff > 1e-3) throw new Error(`softmax(PC · W + b) differs from Step 6 probabilities by up to ${maxDiff} for the test people`);
+  }
+  weightsCheck = { test_people: test.ids.length, same_assigned_group: true, max_probability_absolute_difference: maxDiff };
+  const trainAssigned = train.exact.map((pcs) => assign(pcs, clf, classes));
+  groups.train.predicted = trainAssigned.map((a) => a.predicted);
+  groups.train.probabilities = trainAssigned.map((a) => a.probs);
+}
+
 if (v5Path) {
   const v5 = readScores(v5Path);
   if (v5.k !== k) throw new Error(`${rel(v5Path)}: ${v5.k} PCs, reference has ${k}`);
   groups.v5_files = { ids: v5.ids, scores: v5.scores };
   if (v5.predicted) groups.v5_files.predicted = v5.predicted;
+  else if (clf) {
+    const a = v5.exact.map((pcs) => assign(pcs, clf, classes));
+    groups.v5_files.predicted = a.map((x) => x.predicted);
+    groups.v5_files.probabilities = a.map((x) => x.probs);
+  }
 }
 
 let evr = null, evrInfo = null;
@@ -280,7 +349,6 @@ if (evrPath) {
   evrInfo = e;
 }
 
-const meta = existsSync(metadataPath) ? JSON.parse(readFileSync(metadataPath, "utf8")) : {};
 // The coordinates must come from the same training run as the published ONNX bundle.
 if (evrInfo?.runId && meta.run_id && evrInfo.runId !== meta.run_id) {
   throw new Error(`${rel(evrPath)} is from run ${evrInfo.runId}, but model/metadata.json is run ${meta.run_id}`);
@@ -294,16 +362,24 @@ const out = {
   run_id: meta.run_id ?? null,
   model_sha256: meta.model_sha256 ?? null,
   n_components: k,
+  classes,
   explained_variance_ratio: evr,
-  sources: Object.fromEntries(Object.entries({ train: trainSrc, test: testSrc, predictions: predPath, v5_files: v5Path, explained_variance: evrPath })
+  sources: Object.fromEntries(Object.entries({ train: trainSrc, test: testSrc, predictions: predPath, v5_files: v5Path, explained_variance: evrPath, classifier: clf ? modelPath : null })
     .filter(([, p]) => p).map(([key, p]) => [key, rel(p)])),
+  assignment_weights: clf ? {
+    method: "softmax(PC · classifier_weights + classifier_bias) from model.onnx; test people carry Step 6's recorded probabilities, training people are in-sample",
+    check_against_step6: weightsCheck,
+  } : null,
   groups,
 };
 
 writeFileSync(outPath, JSON.stringify(out));
 
 const testAcc = predicted ? groups.test.labels.filter((l, i) => l === predicted[i]).length : null;
+const trainAcc = groups.train.predicted ? groups.train.labels.filter((l, i) => l === groups.train.predicted[i]).length : null;
 console.log(`Wrote ${rel(outPath)} (${(statSync(outPath).size / 1024).toFixed(0)} KB)`);
 console.log(`  components: ${k}${evr ? ` · PC1–${k} explain ${(evr.reduce((a, b) => a + b, 0) * 100).toFixed(1)}% of variance` : " · no explained_variance_ratio (pass --evr pca_summary.json)"}`);
 console.log(`  train: ${groups.train.ids.length} people · test: ${groups.test.ids.length} people${predicted ? ` · test predicted correct: ${testAcc}/${predicted.length}` : " · test predictions: none (pass --predictions)"}`);
 if (groups.v5_files) console.log(`  v5 files: ${groups.v5_files.ids.length}`);
+if (weightsCheck) console.log(`  assignment weights: softmax(PC·W+b) agrees with Step 6 on all ${weightsCheck.test_people} test people (max |Δp| ${weightsCheck.max_probability_absolute_difference.toExponential(1)}) · train in-sample correct: ${trainAcc}/${groups.train.ids.length}`);
+else console.log("  assignment weights: model/model.onnx not found — train/v5 rows carry PCs only");

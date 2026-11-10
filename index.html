@@ -372,7 +372,7 @@
                   <option value="pop">Colour: population (1000G)</option>
                   <option value="source">Colour: data source</option>
                 </select>
-                <button id="pcaDownloadBtn" class="btn btn-sm btn-outline-secondary" type="button" title="Download plotted coordinates as CSV">
+                <button id="pcaDownloadBtn" class="btn btn-sm btn-outline-secondary" type="button" title="Download the table below (PCs and assignment weights of the plotted people) as CSV">
                   <i class="fa-solid fa-download me-1"></i>CSV
                 </button>
               </div>
@@ -385,6 +385,78 @@
             </div>
             <div class="table-footer">
               <span id="pcaFooter" class="text-muted small"></span>
+            </div>
+
+            <div class="panel-header flex-wrap gap-2 pca-table-header">
+              <div>
+                <h3 class="panel-title">
+                  PC coordinates and group-assignment weights
+                  <button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#pcaWeightsHelp" aria-expanded="false" aria-controls="pcaWeightsHelp" title="How are these numbers computed?" aria-label="How are these numbers computed?">
+                    <i class="fa-solid fa-question"></i>
+                  </button>
+                </h3>
+                <p class="panel-sub">
+                  One row per plotted person: the coordinates on the model's saved principal components and the
+                  classifier's assignment weights (softmax probabilities) for AFR · AMR · EAS · EUR · SAS.
+                  <em>Known</em> is the 1000 Genomes label; <em>Assigned</em> is the highest weight. Weights for the
+                  training people are in-sample; weights for test people are the Step 6 results. Rows follow the layer toggles above.
+                </p>
+              </div>
+              <div class="toolbar">
+                <div class="search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input id="pcaTableSearch" type="search" class="form-control form-control-sm" placeholder="HG00096, PEL, AMR, my file…" aria-label="Search PC table" />
+                </div>
+                <select id="pcaTablePageSize" class="form-select form-select-sm" aria-label="Rows per page">
+                  <option value="25" selected>25 rows</option>
+                  <option value="50">50 rows</option>
+                  <option value="100">100 rows</option>
+                  <option value="1000">1,000 rows</option>
+                  <option value="100000">All rows</option>
+                </select>
+              </div>
+            </div>
+            <div class="collapse" id="pcaWeightsHelp">
+              <div class="help-box">
+                <h4>What the columns mean</h4>
+                <ul>
+                  <li><strong>PC1 … PC10</strong> — the person's coordinates on the model's ten saved principal-component axes
+                    (frozen imputer → scaler → PCA fitted on the 2,003 training people). For an uploaded file they are the
+                    <code>pcs</code> output of the ONNX model computed in your browser; for reference people they come from the cloud export.</li>
+                  <li><strong>AFR · AMR · EAS · EUR · SAS</strong> — the classifier's <em>assignment weights</em>: the softmax probabilities
+                    of the logistic-regression layer that follows the PCA. They sum to 1 and describe how strongly the model assigns the
+                    person to each 1000 Genomes reference group. They are <strong>not</strong> ancestry-mixture percentages.</li>
+                  <li><strong>Known</strong> — the published 1000 Genomes super-population label (outlined badge; never a prediction).
+                    <strong>Assigned</strong> — the group with the highest weight (filled badge). A <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+                    marks a reference person whose assigned group differs from the known label.</li>
+                </ul>
+                <h4>Where the weights come from</h4>
+                <ul>
+                  <li><strong>Uploads</strong> — computed in your browser by the published ONNX model (same numbers as the Upload tab).</li>
+                  <li><strong>1000G test (501)</strong> — the cloud run's Step 6 results on the held-out test people; 500 of 501 match the known label.</li>
+                  <li><strong>1000G train (2,003)</strong> — no cloud step scores the training people. Because the classifier after PCA is a plain
+                    logistic layer, each person's weights are exactly <code>softmax(PC · W + b)</code>, with the weight matrix <code>W</code>
+                    (10 × 5) and bias <code>b</code> read from the published <code>model.onnx</code>. Before trusting the formula,
+                    <code>scripts/build-pca-reference.mjs</code> applies it to the 501 test people and requires it to reproduce
+                    Step 6's recorded results — it does for all 501 (max |Δp| = 0 at 4 decimals) — and only then stores the training
+                    values. All 2,003 are assigned their known label. These are labelled <em>in-sample</em> because the model was fitted on
+                    these very people, so they are not evidence of accuracy.</li>
+                </ul>
+                <p class="mb-0 text-muted">Weights are shown to 4 decimals and PCs to 2; the CSV button exports the current rows with
+                  both at 4 decimals plus a <code>weight_kind</code> column (predicted · held-out (Step 6) · in-sample).</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="table data-table pca-table" id="pcaTable">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span id="pcaTableSummary" class="text-muted small"></span>
+              <nav aria-label="PC table pagination">
+                <ul class="pagination pagination-sm mb-0" id="pcaTablePagination"></ul>
+              </nav>
             </div>
           </div>
         </section>

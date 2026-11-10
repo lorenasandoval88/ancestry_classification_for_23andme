@@ -229,6 +229,33 @@ code, pre, .mono { font-family: var(--font-mono); }
 .btn-check + .btn-outline-secondary { --bs-btn-color: var(--ink-muted); --bs-btn-border-color: var(--line); --bs-btn-hover-bg: var(--surface-2); --bs-btn-hover-color: var(--ink); --bs-btn-hover-border-color: var(--line); }
 .btn-check:checked + .btn-outline-secondary { --bs-btn-active-bg: #f0fdfa; --bs-btn-active-color: var(--teal-500); --bs-btn-active-border-color: var(--teal-400); }
 
+/* PCA table (PCs + assignment weights) */
+.pca-table-header { border-top: 1px solid var(--line); }
+.pca-table-header .panel-title { font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
+.help-btn {
+  display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%;
+  border: 1.5px solid var(--teal-500); background: transparent; color: var(--teal-500); font-size: .7rem; padding: 0; line-height: 1;
+}
+.help-btn:hover, .help-btn[aria-expanded="true"] { background: var(--teal-500); color: #fff; }
+.help-box { margin: 0 1.25rem 1rem; padding: .9rem 1.1rem; border: 1px solid #a7f3d0; border-left-width: 4px; border-radius: 8px; background: #f0fdfa; font-size: .85rem; color: var(--ink); }
+.help-box h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--teal-500); margin: .35rem 0 .4rem; }
+.help-box h4:first-child { margin-top: 0; }
+.help-box ul { margin: 0 0 .6rem; padding-left: 1.1rem; }
+.help-box li + li { margin-top: .3rem; }
+.help-box code { font-size: .8em; }
+.pca-table td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pca-table th, .pca-table td { padding: .4rem .5rem; }
+.pca-table td.w, .pca-table td.pc { font-family: var(--font-mono); font-size: .78rem; padding-inline: .45rem; }
+.pca-table td.w { color: var(--ink-muted); }
+.pca-table td.w.w-max { color: var(--ink); font-weight: 700; }
+.pca-table th.w-AFR, .pca-table td.w-max.w-AFR { color: var(--pop-AFR); }
+.pca-table th.w-AMR, .pca-table td.w-max.w-AMR { color: var(--pop-AMR); }
+.pca-table th.w-EAS, .pca-table td.w-max.w-EAS { color: var(--pop-EAS); }
+.pca-table th.w-EUR, .pca-table td.w-max.w-EUR { color: var(--pop-EUR); }
+.pca-table th.w-SAS, .pca-table td.w-max.w-SAS { color: var(--pop-SAS); }
+.pca-table th.sep, .pca-table td.sep { border-left: 2px solid var(--line); }
+.pca-table tr.is-upload td { background: #fdf4ff; }
+
 /* ===== About / footer ===== */
 .about { padding: 3.5rem 0; background: var(--surface); border-top: 1px solid var(--line); }
 .section-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; }

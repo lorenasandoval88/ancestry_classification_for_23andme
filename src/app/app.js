@@ -654,6 +654,10 @@ const LAYER_IDS = { train: "layerTrain", test: "layerTest", v5_files: "layerV5",
 const PALETTE = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5", "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5", "#393b79", "#637939", "#8c6d31", "#843c39", "#7b4173", "#3182bd"];
 
 const pca = { ref: undefined, x: 0, y: 1, colorBy: "group", drawn: false };
+const pcaTbl = { q: "", page: 1, pageSize: 25, sortKey: "__order", sortDir: 1, headerK: 0 };
+const SOURCE_ORDER = { upload: 0, v5_files: 1, test: 2, train: 3 };
+/** How a point's assignment weights were obtained, for labels and tooltips. */
+const WEIGHT_KIND = { train: "in-sample", test: "held-out (Step 6)", v5_files: "predicted", upload: "predicted" };
 
 /** Flatten reference groups + classified uploads into one point list. */
 function pcaPoints() {
@@ -664,12 +668,13 @@ function pcaPoints() {
     for (let i = 0; i < n; i++) {
       const known = g.labels?.[i] || null;
       const predicted = g.predicted?.[i] || null;
-      pts.push({ source, id: g.ids?.[i] ?? `${source}-${i}`, scores: g.scores[i], known, predicted, pop: g.pops?.[i] || null, group: known || predicted });
+      const probs = g.probabilities?.[i] || null;
+      pts.push({ source, id: g.ids?.[i] ?? `${source}-${i}`, scores: g.scores[i], known, predicted, probs, prob: probs && predicted ? probs[predicted] : null, pop: g.pops?.[i] || null, group: known || predicted });
     }
   }
   for (const p of files) {
     if (p.ancestry?.pcScores) {
-      pts.push({ source: "upload", id: p.label, fileName: p.fileName, scores: p.ancestry.pcScores, known: null, predicted: p.ancestry.group, pop: null, group: p.ancestry.group, prob: p.ancestry.scores?.[p.ancestry.group] });
+      pts.push({ source: "upload", id: p.label, fileName: p.fileName, scores: p.ancestry.pcScores, known: null, predicted: p.ancestry.group, probs: p.ancestry.scores || null, pop: null, group: p.ancestry.group, prob: p.ancestry.scores?.[p.ancestry.group] });
     }
   }
   return pts;
@@ -693,6 +698,7 @@ function renderPca() {
   if (!pts.length || typeof Plotly === "undefined") {
     if (pca.drawn) { Plotly.purge(plotEl); pca.drawn = false; }
     plotEl.innerHTML = ""; summary.innerHTML = ""; footer.textContent = "";
+    renderPcaTable([], k);
     empty.classList.remove("hidden");
     $("#pcaEmptyMsg").innerHTML = typeof Plotly === "undefined" ? "Plotly failed to load."
       : pca.ref === undefined ? "Loading PCA reference…"
@@ -746,7 +752,7 @@ function renderPca() {
     const parts = [`<b>${esc(p.id)}</b>`, SOURCE_LABELS[p.source]];
     if (p.pop) parts.push(`population ${esc(p.pop)}`);
     if (p.known) parts.push(`known group ${p.known}`);
-    if (p.predicted) parts.push(`predicted ${p.predicted}${p.prob != null ? ` (${pct(p.prob, 1)})` : ""}`);
+    if (p.predicted) parts.push(`${p.source === "train" ? "in-sample assignment" : "predicted"} ${p.predicted}${p.prob != null ? ` (${pct(p.prob, 1)})` : ""}`);
     if (p.known && p.predicted && p.known !== p.predicted) parts.push("<b>misclassified</b>");
     parts.push(`${pcaAxisLabel(pca.x)} = ${p.scores[pca.x].toFixed(2)}, ${pcaAxisLabel(pca.y)} = ${p.scores[pca.y].toFixed(2)}`);
     t.text.push(parts.join("<br>"));
@@ -783,15 +789,103 @@ function renderPca() {
     + (k ? `<div class="mini-stat"><span class="v">${k}</span><span class="k">components</span></div>` : "");
   const evr = pca.ref?.explained_variance_ratio;
   footer.textContent = `${fmt.format(shown.length)} points · circles = 1000G train (known label), diamonds = 1000G test (known label), squares = PGP v5 files (predicted), stars = your uploads (predicted)` + (evr?.length ? ` · PC1–${k} explain ${(evr.slice(0, k).reduce((a, b) => a + b, 0) * 100).toFixed(1)}% of variance` : "");
+
+  renderPcaTable(shown, k);
 }
 
+// ---------------------------------------------------------------------------
+// Rendering: PCA table (PC coordinates + group-assignment weights per person)
+// ---------------------------------------------------------------------------
+
+const pcaClasses = () => pca.ref?.classes || POPS;
+
+/** Filter + sort the plotted points for the table. Default order: uploads, PGP files, test, train. */
+function pcaTableRows(pts) {
+  const q = pcaTbl.q.trim().toLowerCase();
+  const rows = q
+    ? pts.filter((p) => [p.id, p.fileName, p.pop, p.known, p.predicted, SOURCE_LABELS[p.source]].some((v) => v && String(v).toLowerCase().includes(q)))
+    : pts.slice();
+  const k = pcaTbl.sortKey, d = pcaTbl.sortDir;
+  const val = (p) => {
+    if (k === "__order") return null;
+    if (k === "source") return SOURCE_ORDER[p.source];
+    if (k.startsWith("w_")) return p.probs?.[k.slice(2)] ?? null;
+    if (k.startsWith("pc")) return p.scores[Number(k.slice(2))];
+    return p[k];
+  };
+  rows.sort((a, b) => {
+    if (k === "__order") return (SOURCE_ORDER[a.source] - SOURCE_ORDER[b.source]) * d || String(a.id).localeCompare(String(b.id), undefined, { numeric: true });
+    const va = val(a), vb = val(b);
+    const ea = va == null || va === "", eb = vb == null || vb === "";
+    if (ea && eb) return 0;
+    if (ea) return 1;
+    if (eb) return -1;
+    if (typeof va === "number") return (va - vb) * d;
+    return String(va).localeCompare(String(vb), undefined, { numeric: true }) * d;
+  });
+  return rows;
+}
+
+function renderPcaTable(shown, k) {
+  const table = $("#pcaTable"); if (!table) return;
+  const thead = table.querySelector("thead"), tbody = table.querySelector("tbody");
+  const classes = pcaClasses();
+
+  if (pcaTbl.headerK !== k || !thead.innerHTML) {
+    thead.innerHTML = `<tr>
+      <th data-sort="source">Source</th>
+      <th data-sort="id">ID</th>
+      <th data-sort="pop">Population</th>
+      <th data-sort="known">Known</th>
+      <th data-sort="predicted">Assigned</th>
+      ${classes.map((g, i) => `<th data-sort="w_${g}" class="num w-${g}${i === 0 ? " sep" : ""}" title="Assignment weight for ${g} (softmax probability)">${g}</th>`).join("")}
+      ${Array.from({ length: k }, (_, i) => `<th data-sort="pc${i}" class="num${i === 0 ? " sep" : ""}" title="${esc(pcaAxisLabel(i))}">PC${i + 1}</th>`).join("")}
+    </tr>`;
+    pcaTbl.headerK = k;
+  }
+
+  const rows = pcaTableRows(shown);
+  const pages = Math.max(1, Math.ceil(rows.length / pcaTbl.pageSize));
+  pcaTbl.page = Math.min(Math.max(1, pcaTbl.page), pages);
+  const startI = (pcaTbl.page - 1) * pcaTbl.pageSize;
+  const slice = rows.slice(startI, startI + pcaTbl.pageSize);
+  const q = pcaTbl.q.trim();
+  const sourceClass = { train: "badge-train", test: "badge-test", v5_files: "badge-pgp", upload: "badge-upload" };
+
+  tbody.innerHTML = slice.map((p) => {
+    const top = p.probs ? classes.reduce((best, g) => (p.probs[g] ?? -1) > (p.probs[best] ?? -1) ? g : best, classes[0]) : null;
+    const assigned = p.predicted
+      ? `<span class="pop pop-${esc(p.predicted)}" title="${esc(WEIGHT_KIND[p.source])}${p.prob != null ? ` · weight ${p.prob.toFixed(4)}` : ""}">${esc(p.predicted)}</span>${p.known && p.known !== p.predicted ? ' <i class="fa-solid fa-triangle-exclamation text-warning" title="differs from the known label"></i>' : ""}`
+      : `<span class="text-muted small">—</span>`;
+    return `<tr class="${p.source === "upload" ? "is-upload" : ""}">
+      <td><span class="badge-soft ${sourceClass[p.source]}">${esc(SOURCE_LABELS[p.source])}</span></td>
+      <td class="fw-semibold" title="${esc(p.fileName || p.id)}">${highlight(p.id, q)}</td>
+      <td class="small">${p.pop ? highlight(p.pop, q) : "—"}</td>
+      <td>${p.known ? `<span class="pop pop-outline pop-${esc(p.known)}" title="Known 1000 Genomes label">${esc(p.known)}</span>` : `<span class="text-muted small">—</span>`}</td>
+      <td>${assigned}</td>
+      ${classes.map((g, i) => `<td class="num w w-${g}${g === top ? " w-max" : ""}${i === 0 ? " sep" : ""}">${p.probs?.[g] != null ? p.probs[g].toFixed(4) : "—"}</td>`).join("")}
+      ${p.scores.map((v, i) => `<td class="num pc${i === 0 ? " sep" : ""}">${v.toFixed(2)}</td>`).join("")}
+    </tr>`;
+  }).join("");
+
+  const nWeights = rows.filter((p) => p.probs).length;
+  $("#pcaTableSummary").innerHTML = rows.length
+    ? `Showing ${fmt.format(startI + 1)}–${fmt.format(Math.min(startI + pcaTbl.pageSize, rows.length))} of ${fmt.format(rows.length)} people · ${fmt.format(nWeights)} with assignment weights · bold = highest weight · PCs to 2 dp (CSV has 4)`
+    : shown.length ? "No rows match the search." : "No points plotted.";
+  renderPagination($("#pcaTablePagination"), pcaTbl.page, pages);
+  markSort(table, pcaTbl.sortKey, pcaTbl.sortDir);
+}
+
+/** The plotted people (current layer toggles + table search/sort) with weights and PCs. */
 function pcaDownloadCsv() {
-  const pts = pcaPoints();
-  if (!pts.length) return;
-  const k = pcaComponentCount(pts);
-  downloadCsv("ancestry_pca_coordinates.csv",
-    ["source", "id", "population", "known_group", "predicted_group", ...Array.from({ length: k }, (_, i) => `PC${i + 1}`)],
-    pts.map((p) => [SOURCE_LABELS[p.source], p.id, p.pop || "", p.known || "", p.predicted || "", ...p.scores.map((v) => v.toFixed(4))]));
+  const visible = Object.fromEntries(Object.entries(LAYER_IDS).map(([s, id]) => [s, $(`#${id}`)?.checked ?? true]));
+  const rows = pcaTableRows(pcaPoints().filter((p) => visible[p.source]));
+  if (!rows.length) return;
+  const k = pcaComponentCount(rows);
+  const classes = pcaClasses();
+  downloadCsv("ancestry_pcs_and_assignment_weights.csv",
+    ["source", "id", "population", "known_group", "assigned_group", "weight_kind", ...classes.map((g) => `w_${g}`), ...Array.from({ length: k }, (_, i) => `PC${i + 1}`)],
+    rows.map((p) => [SOURCE_LABELS[p.source], p.id, p.pop || "", p.known || "", p.predicted || "", p.probs ? WEIGHT_KIND[p.source] : "", ...classes.map((g) => (p.probs?.[g] != null ? p.probs[g].toFixed(4) : "")), ...p.scores.map((v) => v.toFixed(4))]));
 }
 
 async function initPca() {
@@ -918,6 +1012,22 @@ function init() {
   $("#pcaColorBy").addEventListener("change", (e) => { pca.colorBy = e.target.value; renderPca(); });
   Object.values(LAYER_IDS).forEach((id) => $(`#${id}`).addEventListener("change", renderPca));
   $("#pcaDownloadBtn").addEventListener("click", pcaDownloadCsv);
+  // PC table (re-renders the table only; the plot is unaffected by search / sort / paging).
+  const rt = () => renderPcaTable(pcaPoints().filter((p) => $(`#${LAYER_IDS[p.source]}`)?.checked ?? true), pcaComponentCount(pcaPoints()));
+  $("#pcaTableSearch").addEventListener("input", debounce((e) => { pcaTbl.q = e.target.value; pcaTbl.page = 1; rt(); }));
+  $("#pcaTablePageSize").addEventListener("change", (e) => { pcaTbl.pageSize = Number(e.target.value); pcaTbl.page = 1; rt(); });
+  $("#pcaTable thead").addEventListener("click", (e) => {
+    const th = e.target.closest("th[data-sort]"); if (!th) return;
+    const k = th.dataset.sort;
+    pcaTbl.sortDir = pcaTbl.sortKey === k ? -pcaTbl.sortDir : (k.startsWith("w_") ? -1 : 1); pcaTbl.sortKey = k; pcaTbl.page = 1;
+    rt();
+  });
+  $("#pcaTablePagination").addEventListener("click", (e) => {
+    const a = e.target.closest("a[data-page]"); if (!a) return;
+    e.preventDefault();
+    if (a.closest(".disabled")) return;
+    pcaTbl.page = Number(a.dataset.page); rt();
+  });
   // Plotly sizes itself to the container; redraw when the tab becomes visible.
   $("#tab-pca").addEventListener("shown.bs.tab", () => { if (pca.drawn) Plotly.Plots.resize($("#pcaPlot")); else renderPca(); });
 
