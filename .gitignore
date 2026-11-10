@@ -6,6 +6,7 @@ cloud/1_prepared_data/results/
 cloud/7_apply_v5_classifier/input/test/
 
 # -- re-packs or copies of files that already have a canonical home
+#    (model/ = the Step 6 browser export with the pcs output added by scripts/expose-pcs-output.mjs)
 cloud/*/results/*/artifacts.zip
 cloud/6_test_model/results/*/browser/
 cloud/7_apply_v5_classifier/results/*/browser/

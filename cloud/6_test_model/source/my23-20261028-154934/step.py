@@ -55,6 +55,7 @@ def execute(ctx):
         metadata={'schema_version':1,'model_name':'my23_v5_ancestry_model','run_id':ctx.run_id,
                   'classes':classes,'feature_count':len(markers),'training_people':2003,'genome_build':'37',
                   'input_name':'genotypes','probabilities_output':'probabilities',
+                  'pc_scores_output':'pcs','n_components':int(pipe.named_steps['pca'].n_components_),
                   'model_sha256':sha(folder/'model.onnx'),'markers_sha256':sha(folder/'markers.json'),
                   'minimum_called_fraction':ctx.cfg['minimum_called_fraction'],
                   'maximum_incompatible_fraction':ctx.cfg['maximum_incompatible_fraction'],

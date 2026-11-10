@@ -1,4 +1,8 @@
-"""Export this fitted numeric pipeline using standard ONNX tensor operators."""
+"""Export this fitted numeric pipeline using standard ONNX tensor operators.
+
+Graph outputs: probabilities[N, classes], class_index[N] and pcs[N, n_components] (the PCA
+coordinates, so a browser can place a new file on the reference PCA plot).
+"""
 import json
 from pathlib import Path
 import numpy as np
@@ -34,7 +38,8 @@ def export(pipe, markers, folder):
     graph = h.make_graph(nodes,'my23_v5_ancestry_model',
                          [h.make_tensor_value_info('genotypes',T.FLOAT,[None,len(markers)])],
                          [h.make_tensor_value_info('probabilities',T.FLOAT,[None,len(clf.classes_)]),
-                          h.make_tensor_value_info('class_index',T.INT64,[None])], initializers)
+                          h.make_tensor_value_info('class_index',T.INT64,[None]),
+                          h.make_tensor_value_info('pcs',T.FLOAT,[None,int(pipe.named_steps['pca'].n_components_)])], initializers)
     model = h.make_model(graph, producer_name='my23_v5_ancestry_model',opset_imports=[h.make_opsetid('',17)])
     model.ir_version = 9
     onnx.checker.check_model(model)
@@ -49,18 +54,24 @@ def export(pipe, markers, folder):
     return list(clf.classes_)
 
 
-def parity(pipe, session, x, classes, atol):
+def parity(pipe, session, x, classes, atol, pc_atol=0.05):
     max_difference = 0.0
+    max_pc_difference = 0.0
     for i in range(0,len(x),32):
         data = np.asarray(x[i:i+32],dtype=np.float32)
         expected = pipe.predict_proba(data)
-        actual,index = session.run(['probabilities','class_index'],{'genotypes':data})
+        expected_pcs = pipe[:-1].transform(data)
+        actual,index,pcs = session.run(['probabilities','class_index','pcs'],{'genotypes':data})
         if not np.isfinite(actual).all() or not np.array_equal(np.argmax(expected,axis=1),index):
             raise ValueError('ONNX and Python disagree on reference-group labels')
         max_difference = max(max_difference,float(np.max(np.abs(actual-expected))))
+        max_pc_difference = max(max_pc_difference,float(np.max(np.abs(pcs-expected_pcs))))
     if max_difference > atol:
         raise ValueError(f'ONNX probabilities differ from Python by {max_difference}, limit {atol}')
+    if max_pc_difference > pc_atol:
+        raise ValueError(f'ONNX PCA coordinates differ from Python by {max_pc_difference}, limit {pc_atol}')
     return {'people_compared':len(x),'same_predicted_labels':True,
             'max_probability_absolute_difference':max_difference,'tolerance':atol,
+            'max_pc_absolute_difference':max_pc_difference,'pc_tolerance':pc_atol,
             'runtime':'Python ONNX Runtime; actual browser compatibility is a separate check'}
 

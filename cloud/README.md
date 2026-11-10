@@ -42,7 +42,7 @@ The mirror on disk is complete (2 GB); `.gitignore` keeps these out of the repos
 | `1_prepared_data/input/`, `1_prepared_data/results/` | `v5_manifest.json` (215 MB) exceeds GitHub's 100 MB file limit; prepared PLINK chromosomes are intermediates | 658 MB |
 | `7_apply_v5_classifier/input/test/files/` | the 74 raw 23andMe files; would push the repo past the GitHub Pages size limit | 1.2 GB |
 | `*/results/*/artifacts.zip` | re-pack of files already present next to it | 41 MB |
-| `6_test_model/results/*/browser/`, `7_apply_v5_classifier/results/*/browser/` | the published bundle — served from `model/` and `vendor/`, verified identical | 37 MB ×2 |
+| `6_test_model/results/*/browser/`, `7_apply_v5_classifier/results/*/browser/` | the published bundle — served from `model/` and `vendor/`. `model/model.onnx` is the Step 6 export plus the `pcs` graph output (`scripts/expose-pcs-output.mjs`; weights unchanged, original checksum in `metadata.json → derived_from`) | 37 MB ×2 |
 | `runs/*/pca_reference/predictions.tsv` | copy of `6_test_model/results/*/predictions.tsv` | 64 KB |
 | `**/my23-20261028-153511/` | aborted first attempt (only two staged inputs exist) | 215 MB |
 
@@ -72,5 +72,19 @@ npm run build:data      # build-catalog + build-cohort + build-pca-reference
 `build-cohort.mjs` verifies the panel against the Step 6 `input_manifest.json` md5 and the Step 3
 `audit_summary.json` SHA-256; `model_checksums.json` pins `model.joblib` and `selected_markers.tsv`,
 and the same model SHA-256 appears in `test_summary.json`, `pca_summary.json` and Step 7 `summary.json`.
+
+## Post-run edits to the mirrored source
+
+`source/<run_id>/source_manifest.json` records the SHA-256 of every file as deployed. Two files have
+been edited since, so the next deployment exports the PCA coordinates natively:
+
+| File | Change |
+|------|--------|
+| `source/my23-20261028-154934/export_onnx.py` | `pcs[N, n_components]` added to the ONNX graph outputs; `parity()` also compares the ONNX PC coordinates with `pipeline[:-1].transform` (`pc_atol` 0.05) and reports `max_pc_absolute_difference` |
+| `6_test_model/source/my23-20261028-154934/step.py` | `metadata.json` gains `pc_scores_output: "pcs"` and `n_components` |
+
+The original bytes are still in the bucket. The published `model/model.onnx` was given the same
+`pcs` output locally by `scripts/expose-pcs-output.mjs` (see the main README, *The `pcs` output*).
+
 To redeploy the pipeline, zip `source/<run_id>/` together with each `<step>/source/<run_id>/` laid out
 as `<step>/source/` and follow `source/<run_id>/README.md`.

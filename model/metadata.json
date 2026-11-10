@@ -6,6 +6,12 @@
     "EUR",
     "SAS"
   ],
+  "derived_from": {
+    "model_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+    "source": "cloud Step 6 browser export (6_test_model/results/<run_id>/browser/model.onnx)",
+    "change": "graph output `pcs` (PCA coordinates, [N, n_components]) exposed; nodes, weights and the probabilities / class_index outputs are unchanged",
+    "script": "scripts/expose-pcs-output.mjs"
+  },
   "feature_count": 335663,
   "genome_build": "37",
   "input_name": "genotypes",
@@ -14,7 +20,9 @@
   "maximum_incompatible_fraction": 0.01,
   "minimum_called_fraction": 0.9,
   "model_name": "my23_v5_ancestry_model",
-  "model_sha256": "2f2c04825bd9f78b9897a9bdef90ddb0fc64e270ea450ecb79bb33cf9db2fdec",
+  "model_sha256": "f8d925bb5bf68871cc90474d0fba6d5278b0ab6a12820b58bbbabed277b46786",
+  "n_components": 10,
+  "pc_scores_output": "pcs",
   "probabilities_output": "probabilities",
   "run_id": "my23-20261028-154934",
   "schema_version": 1,

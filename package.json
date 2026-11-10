@@ -10,7 +10,15 @@
   },
   "homepage": "https://lorenasandoval88.github.io/ancestry_classification_for_v5_23andme_files/",
   "bugs": "https://github.com/lorenasandoval88/ancestry_classification_for_v5_23andme_files/issues",
-  "keywords": ["23andme", "ancestry", "1000-genomes", "genomics", "pca", "classifier", "browser"],
+  "keywords": [
+    "23andme",
+    "ancestry",
+    "1000-genomes",
+    "genomics",
+    "pca",
+    "classifier",
+    "browser"
+  ],
   "main": "src/sdk/index.js",
   "exports": {
     ".": "./src/sdk/index.js",
@@ -21,7 +29,20 @@
     "build:cohort": "node scripts/build-cohort.mjs",
     "build:pca": "node scripts/build-pca-reference.mjs",
     "build:data": "npm run build:catalog && npm run build:cohort && npm run build:pca",
+    "model:expose-pcs": "node scripts/expose-pcs-output.mjs",
     "serve": "npx http-server -p 8080 -c-1"
   },
-  "files": ["index.html", "src", "model", "data/participants_catalog.json", "data/reference_cohort.json", "data/demo_genotype_file", "README.md", "LICENSE"]
+  "files": [
+    "index.html",
+    "src",
+    "model",
+    "data/participants_catalog.json",
+    "data/reference_cohort.json",
+    "data/demo_genotype_file",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "onnx-proto": "^8.0.1"
+  }
 }
